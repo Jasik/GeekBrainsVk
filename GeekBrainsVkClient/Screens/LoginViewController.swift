@@ -29,7 +29,13 @@ class LoginViewController: UIViewController {
         
         setupObserver()
     }
-   
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        setup()
+    }
+  
     @objc func keyboardWasShow(notification: Notification) {
         let info = notification.userInfo! as NSDictionary
         let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
