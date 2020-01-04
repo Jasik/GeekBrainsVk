@@ -16,6 +16,10 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var signInButton: UIButton!
     @IBOutlet private weak var scrollView: UIScrollView!
     
+    private var isLoginAndPasswordNotEmpty: Bool? {
+        return !loginTextField.text!.isEmpty && !passwordTextField.text!.isEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
