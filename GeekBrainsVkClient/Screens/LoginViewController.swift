@@ -42,6 +42,14 @@ class LoginViewController: UIViewController {
         removeObserver()
     }
     
+    @IBAction func signInButtonTapped(_ sender: UIButton) {
+        guard let loginText = loginTextField.text, let passwordText = passwordTextField.text  else {
+            return
+        }
+        print("login: \(loginText)")
+        print("password: \(passwordText)")
+    }
+
     @objc func keyboardWasShow(notification: Notification) {
         let info = notification.userInfo! as NSDictionary
         let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
