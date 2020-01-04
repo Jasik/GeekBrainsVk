@@ -13,6 +13,7 @@
 		9F0E4EE123B4F15A0072FD34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F0E4EDF23B4F15A0072FD34 /* LaunchScreen.storyboard */; };
 		9F0E4EF223BA2BC60072FD34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0E4EF123BA2BC60072FD34 /* LoginViewController.swift */; };
 		9F0E4EF423BA347D0072FD34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0E4EF323BA347D0072FD34 /* Assets.xcassets */; };
+		9F0E4EFA23C036D40072FD34 /* LoginScreenTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0E4EF923C036D40072FD34 /* LoginScreenTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9F0E4EE223B4F15A0072FD34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F0E4EF123BA2BC60072FD34 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9F0E4EF323BA347D0072FD34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9F0E4EF923C036D40072FD34 /* LoginScreenTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		9F0E4ED323B4F1580072FD34 /* GeekBrainsVkClient */ = {
 			isa = PBXGroup;
 			children = (
+				9F0E4EF823C036860072FD34 /* CustomVIews */,
 				9F0E4EF023BA29EC0072FD34 /* SharedObjects */,
 				9F0E4EEF23BA29A40072FD34 /* Resources */,
 				9F0E4EEE23BA29200072FD34 /* Screens */,
@@ -89,6 +92,14 @@
 				9F0E4EDF23B4F15A0072FD34 /* LaunchScreen.storyboard */,
 			);
 			path = SharedObjects;
+			sourceTree = "<group>";
+		};
+		9F0E4EF823C036860072FD34 /* CustomVIews */ = {
+			isa = PBXGroup;
+			children = (
+				9F0E4EF923C036D40072FD34 /* LoginScreenTextField.swift */,
+			);
+			path = CustomVIews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F0E4EFA23C036D40072FD34 /* LoginScreenTextField.swift in Sources */,
 				9F0E4EF223BA2BC60072FD34 /* LoginViewController.swift in Sources */,
 				9F0E4ED523B4F1580072FD34 /* AppDelegate.swift in Sources */,
 				9F0E4ED723B4F1580072FD34 /* SceneDelegate.swift in Sources */,
