@@ -33,4 +33,8 @@ open class LoginScreenTextField: UITextField {
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
+    
+    private func setup() {
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: [NSAttributedString.Key.foregroundColor : UIColor(named: "placeholder_color") ?? UIColor.white])
+    }
 }
