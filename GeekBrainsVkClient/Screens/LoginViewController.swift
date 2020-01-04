@@ -35,7 +35,13 @@ class LoginViewController: UIViewController {
         
         setup()
     }
-  
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        removeObserver()
+    }
+    
     @objc func keyboardWasShow(notification: Notification) {
         let info = notification.userInfo! as NSDictionary
         let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
