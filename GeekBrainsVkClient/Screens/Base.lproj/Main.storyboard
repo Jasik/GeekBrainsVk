@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -13,23 +13,23 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="GeekBrainsVkClient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0al-Qp-dai">
-                                <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
+                                <rect key="frame" x="44" y="0.0" width="808" height="393"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otd-Es-K9F">
-                                        <rect key="frame" x="130" y="40" width="550" height="720"/>
+                                        <rect key="frame" x="100" y="40" width="608" height="262"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VK_Monochrome_Logo_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="RQB-Ep-LIa" userLabel="Logo Image View" customClass="VK_Monochrome_Logo_transparent">
-                                                <rect key="frame" x="30" y="30" width="490" height="144"/>
+                                                <rect key="frame" x="30" y="30" width="548" height="53"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNV-D0-B66">
-                                                <rect key="frame" x="20" y="274" width="510" height="91"/>
+                                                <rect key="frame" x="20" y="182.5" width="568" height="91"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email или телефон" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RAd-jd-HSf" customClass="LoginScreenTextField" customModule="GeekBrainsVkClient" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="510" height="45"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="568" height="45"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                         <constraints>
@@ -39,14 +39,14 @@
                                                         <textInputTraits key="textInputTraits" textContentType="nickname"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXf-SN-bv0" userLabel="Spacer">
-                                                        <rect key="frame" x="0.0" y="45" width="510" height="1"/>
+                                                        <rect key="frame" x="0.0" y="45" width="568" height="1"/>
                                                         <color key="backgroundColor" name="border_color"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="4bx-3C-yf8"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MAq-b3-MIY" customClass="LoginScreenTextField" customModule="GeekBrainsVkClient" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="46" width="510" height="45"/>
+                                                        <rect key="frame" x="0.0" y="46" width="568" height="45"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -71,7 +71,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTa-xz-fQ9" userLabel="Sign In Buttom">
-                                                <rect key="frame" x="20" y="385" width="510" height="45"/>
+                                                <rect key="frame" x="20" y="293.5" width="568" height="45"/>
                                                 <color key="backgroundColor" name="activeButtonColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Войти">
@@ -82,7 +82,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYM-hg-ZVn" userLabel="Remember Password Button">
-                                                <rect key="frame" x="207" y="450" width="136" height="33"/>
+                                                <rect key="frame" x="236" y="358.5" width="136" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <state key="normal" title="Забыли пароль?">
                                                     <color key="titleColor" name="remember_password_button_color"/>
@@ -110,6 +110,7 @@
                                     <constraint firstItem="otd-Es-K9F" firstAttribute="top" secondItem="0al-Qp-dai" secondAttribute="top" constant="40" id="0j1-5w-G2S"/>
                                     <constraint firstItem="otd-Es-K9F" firstAttribute="height" secondItem="0al-Qp-dai" secondAttribute="height" multiplier="2/3" id="5gN-hi-3vF"/>
                                     <constraint firstItem="otd-Es-K9F" firstAttribute="leading" secondItem="0al-Qp-dai" secondAttribute="leading" constant="20" id="JM5-AV-Soe">
+                                        <variation key="heightClass=compact-widthClass=regular" constant="100"/>
                                         <variation key="heightClass=regular-widthClass=regular" constant="130"/>
                                     </constraint>
                                     <constraint firstAttribute="bottom" secondItem="otd-Es-K9F" secondAttribute="bottom" constant="232.5" id="QEV-TR-JsW"/>
