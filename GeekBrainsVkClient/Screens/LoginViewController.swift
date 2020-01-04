@@ -23,7 +23,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-  
+
+    @objc func keyboardWillBeHidden(notification: Notification) {
+        let contentInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInsets
+    }
+    
     private func setup() {
         let adaptiveBorderColor = UIColor(named: "border_color")
         textFieldContainer.layer.borderWidth = 1
