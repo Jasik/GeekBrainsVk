@@ -24,6 +24,17 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
     }
   
+    private func setup() {
+        let adaptiveBorderColor = UIColor(named: "border_color")
+        textFieldContainer.layer.borderWidth = 1
+        textFieldContainer.layer.borderColor = adaptiveBorderColor?.cgColor
+        textFieldContainer.layer.cornerRadius = 10
+        
+        signInButton.layer.cornerRadius = 10
+        signInButton.isEnabled = isLoginAndPasswordNotEmpty!
+        signInButton.backgroundColor = UIColor(named: isLoginAndPasswordNotEmpty! ? "activeButtonColor" : "noActiveButtonColor")
+    }
+    
     private func setupObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWasShow(notification:)),
