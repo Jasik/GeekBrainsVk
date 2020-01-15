@@ -69,6 +69,21 @@ class LoginViewController: UIViewController {
         scrollView.contentInset = contentInsets
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        let checkLoginResult = checkLogin()
+        if identifier == "LoginSuccess" {
+            if !checkLoginResult {
+                showAlert(title: "Ошибка!", message: !isLoginAndPasswordNotEmpty ? "Поля Логин и пароль не были введены!" : "Непрвильный логин или пароль!")
+            }
+        }
+        return checkLoginResult
+    }
+    
+    private func checkLogin() -> Bool {
+        guard let login = loginTextField.text, let password = passwordTextField.text else { return false }
+        return login == "Login" && password == "12345"
+    }
+    
     private func setup() {
         let adaptiveBorderColor = UIColor(named: "border_color")
         textFieldContainer.layer.borderWidth = 1
