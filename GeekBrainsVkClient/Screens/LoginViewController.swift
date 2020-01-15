@@ -16,8 +16,11 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var signInButton: UIButton!
     @IBOutlet private weak var scrollView: UIScrollView!
     
-    private var isLoginAndPasswordNotEmpty: Bool? {
-        return !loginTextField.text!.isEmpty && !passwordTextField.text!.isEmpty
+    private var isLoginAndPasswordNotEmpty: Bool {
+        guard let loginIsEmpty = loginTextField.text?.isEmpty, let passwordIsEmpty = passwordTextField.text?.isEmpty else {
+            return false
+        }
+        return !loginIsEmpty && !passwordIsEmpty
     }
     
     override func viewDidLoad() {
@@ -70,8 +73,8 @@ class LoginViewController: UIViewController {
         textFieldContainer.layer.cornerRadius = 10
         
         signInButton.layer.cornerRadius = 10
-        signInButton.isEnabled = isLoginAndPasswordNotEmpty!
-        signInButton.backgroundColor = UIColor(named: isLoginAndPasswordNotEmpty! ? "activeButtonColor" : "noActiveButtonColor")
+        signInButton.isEnabled = isLoginAndPasswordNotEmpty
+        signInButton.backgroundColor = UIColor(named: isLoginAndPasswordNotEmpty ? "activeButtonColor" : "noActiveButtonColor")
     }
     
     private func setupObserver() {
