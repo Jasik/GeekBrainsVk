@@ -100,3 +100,11 @@ class LoginViewController: UIViewController {
                                                   object: nil)
     }
 }
+extension LoginViewController {
+    func showAlert(title: String, message: String) {
+        let alertControllert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel)
+        alertControllert.addAction(action)
+        present(alertControllert, animated: true, completion: nil)
+    }
+}
