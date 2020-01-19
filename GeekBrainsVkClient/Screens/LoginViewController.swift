@@ -25,6 +25,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let dismissTap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(dismissTap)
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +70,21 @@ class LoginViewController: UIViewController {
         scrollView.contentInset = contentInsets
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        let checkLoginResult = checkLogin()
+        if identifier == "LoginSuccess" {
+            if !checkLoginResult {
+                showAlert(title: "Ошибка!", message: !isLoginAndPasswordNotEmpty ? "Поля Логин и пароль не были введены!" : "Непрвильный логин или пароль!")
+            }
+        }
+        return checkLoginResult
+    }
+    
+    private func checkLogin() -> Bool {
+        guard let login = loginTextField.text, let password = passwordTextField.text else { return false }
+        return login == "Login" && password == "12345"
+    }
+    
     private func setup() {
         let adaptiveBorderColor = UIColor(named: "border_color")
         textFieldContainer.layer.borderWidth = 1
@@ -95,5 +114,13 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.removeObserver(self,
                                                   name: UIResponder.keyboardWillHideNotification,
                                                   object: nil)
+    }
+}
+extension LoginViewController {
+    func showAlert(title: String, message: String) {
+        let alertControllert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel)
+        alertControllert.addAction(action)
+        present(alertControllert, animated: true, completion: nil)
     }
 }
