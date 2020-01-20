@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="96" id="KGk-i7-Jjw" customClass="CustomCell" customModule="GeekBrainsVkClient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="358" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="358" height="96"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tRF-uB-URR">
+                        <rect key="frame" x="20" y="9.5" width="77" height="77"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kc7-c8-Em8">
+                        <rect key="frame" x="107" y="37.5" width="241" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tRF-uB-URR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4ri-AS-wy4"/>
+                    <constraint firstItem="tRF-uB-URR" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.8" id="GEo-QH-oCR"/>
+                    <constraint firstItem="tRF-uB-URR" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.8" id="Gjm-cA-fsg"/>
+                    <constraint firstItem="Kc7-c8-Em8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Jey-nH-i6b"/>
+                    <constraint firstItem="Kc7-c8-Em8" firstAttribute="leading" secondItem="tRF-uB-URR" secondAttribute="trailing" constant="10" id="ZWc-mz-jFc"/>
+                    <constraint firstAttribute="trailing" secondItem="Kc7-c8-Em8" secondAttribute="trailing" constant="10" id="llt-x4-ryt"/>
+                    <constraint firstItem="tRF-uB-URR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="tdn-nO-tJ1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="TitleLabel" destination="Kc7-c8-Em8" id="dmq-fo-P7o"/>
+                <outlet property="thumbnailImageView" destination="tRF-uB-URR" id="sGI-K9-b7F"/>
+            </connections>
+            <point key="canvasLocation" x="165.21739130434784" y="101.78571428571428"/>
+        </tableViewCell>
+    </objects>
+</document>
