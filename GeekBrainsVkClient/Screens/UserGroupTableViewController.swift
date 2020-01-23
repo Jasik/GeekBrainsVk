@@ -18,6 +18,12 @@ class UserGroupTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.separatorStyle = myGroups.isEmpty ? .none : .singleLine
+    }
+    
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         if segue.identifier == "addGroup" {
             guard let groupsTableViewController = segue.source as? GroupsTableViewController else {
@@ -55,6 +61,9 @@ class UserGroupTableViewController: UITableViewController {
         if editingStyle == .delete {
             myGroups.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            if myGroups.isEmpty {
+                tableView.separatorStyle = .none
+            }
         }
     }
 }
