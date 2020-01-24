@@ -14,7 +14,8 @@ class FriendListTableTableViewController: UITableViewController {
         User(id: 3, name: "Rogozhkin Vladimir", image: ["00", "00", "00"]),
         User(id: 1, name: "Jonny Depp", image: ["j01", "j02", "j03"]),
         User(id: 2, name: "Bred Pitt", image: ["b01", "b02", "b03"]),
-        User(id: 4, name: "Armano", image: ["00", "00", "00"])
+        User(id: 4, name: "Armano", image: ["00", "00", "00"]),
+        User(id: 5, name: "Jonny Pit", image: ["b01", "j02", "j03"])
     ]
     private var friendsDictionary = [String: [User]]()
     private var friendsSectionName = [String]()
