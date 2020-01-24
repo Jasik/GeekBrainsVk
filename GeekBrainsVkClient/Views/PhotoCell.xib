@@ -26,13 +26,23 @@
                                     <constraint firstAttribute="height" constant="150" id="nuG-n0-7WM"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="age-vR-5Ab" customClass="LikeMeter" customModule="GeekBrainsVkClient" customModuleProvider="target">
+                                <rect key="frame" x="85" y="105" width="60" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bME-OJ-bxP"/>
+                                    <constraint firstAttribute="width" constant="60" id="xHA-BL-3F5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="h9N-kt-QZ8" firstAttribute="bottom" secondItem="age-vR-5Ab" secondAttribute="bottom" constant="5" id="DXh-08-QBh"/>
                             <constraint firstItem="huV-Qj-1lG" firstAttribute="bottom" secondItem="EGA-zx-hrH" secondAttribute="bottom" id="Jkt-wr-dHX"/>
                             <constraint firstItem="huV-Qj-1lG" firstAttribute="trailing" secondItem="EGA-zx-hrH" secondAttribute="trailing" id="cNs-0s-ThT"/>
                             <constraint firstItem="huV-Qj-1lG" firstAttribute="leading" secondItem="EGA-zx-hrH" secondAttribute="leading" id="hsA-7Z-DCn"/>
                             <constraint firstItem="huV-Qj-1lG" firstAttribute="top" secondItem="EGA-zx-hrH" secondAttribute="top" id="hxP-jA-QRg"/>
+                            <constraint firstAttribute="trailing" secondItem="age-vR-5Ab" secondAttribute="trailing" constant="5" id="tDS-LW-aed"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h9N-kt-QZ8"/>
                     </view>
