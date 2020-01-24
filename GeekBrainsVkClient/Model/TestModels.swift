@@ -8,20 +8,18 @@
 
 import Foundation
 
-struct TestModel {
+struct User {
     let id: Int
     let name: String
+    let image: [String]
 }
 
-struct TestGroup {
+struct Group {
     let groupID: Int
-    let groupName: String
+    let groupName, image: String
 }
 
-let friends: [TestModel] = [
-    TestModel(id: 1, name: "Jonny Depp")
-]
-
-let groups: [TestGroup] = [
-    TestGroup(groupID: 1, groupName: "I like Android")
+let friends: [User] = [
+    User(id: 1, name: "Jonny Depp", image: ["j01", "j02", "j03"]),
+    User(id: 2, name: "Bred Pitt", image: ["b01", "b02", "b03"])
 ]
