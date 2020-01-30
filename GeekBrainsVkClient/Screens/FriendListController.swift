@@ -80,7 +80,8 @@ extension FriendListController: UITableViewDataSource {
         let key = friendsSectionName[indexPath.section]
         if let friends = friendsDictionary[key] {
             let friend = friends[indexPath.row]
-            
+            cell.thumbnailImageView.image = UIImage(named: friend.image.first ?? "00")
+            cell.TitleLabel.text = friend.name
             cell.accessoryType = .disclosureIndicator
         }
         return cell

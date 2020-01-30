@@ -35,7 +35,7 @@ class UserGroupsController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.registerXib(cellClass: UserGroupCell.self)
+        tableView.registerXib(cellClass: CustomCell.self)
     }
     
     @IBAction func addGroup(segue: UIStoryboardSegue) {
@@ -57,17 +57,34 @@ class UserGroupsController: UIViewController {
 extension UserGroupsController: UITableViewDelegate { }
 
 extension UserGroupsController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myGroups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserGroupCell.className, for: indexPath) as? UserGroupCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.className, for: indexPath) as? CustomCell else {
             fatalError()
         }
         let myGroup = myGroups[indexPath.row]
-        cell.group = myGroup
+        cell.thumbnailImageView.image = UIImage(named: myGroup.image)
+        cell.TitleLabel.text = myGroup.groupName
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            myGroups.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            if myGroups.isEmpty {
+                tableView.separatorStyle = .none
+            }
+        }
     }
     
     

@@ -14,16 +14,6 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var shadowView: ShadowView!
     
-//    var friend: User? {
-//        didSet {
-//            guard let friend = friend else {
-//                return
-//            }
-//            thumbnailImageView.image = UIImage(named: friend.image.first ?? "00")
-//            TitleLabel.text = friend.name
-//        }
-//    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
