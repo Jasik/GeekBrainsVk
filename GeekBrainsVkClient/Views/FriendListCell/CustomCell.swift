@@ -10,19 +10,19 @@ import UIKit
 
 class CustomCell: UITableViewCell {
 
-    @IBOutlet private weak var thumbnailImageView: UIImageView!
-    @IBOutlet private weak var TitleLabel: UILabel!
-    @IBOutlet private weak var shadowView: ShadowView!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var TitleLabel: UILabel!
+    @IBOutlet weak var shadowView: ShadowView!
     
-    var friend: User? {
-        didSet {
-            guard let friend = friend else {
-                return
-            }
-            thumbnailImageView.image = UIImage(named: friend.image.first ?? "00")
-            TitleLabel.text = friend.name
-        }
-    }
+//    var friend: User? {
+//        didSet {
+//            guard let friend = friend else {
+//                return
+//            }
+//            thumbnailImageView.image = UIImage(named: friend.image.first ?? "00")
+//            TitleLabel.text = friend.name
+//        }
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

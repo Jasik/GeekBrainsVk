@@ -47,8 +47,8 @@ class UserGroupTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
 
         let myGroup = myGroups[indexPath.row]
-        cell.TitleLabel.text = myGroup.groupName
-        cell.thumbnailImageView.image = UIImage(named: myGroup.image)
+//        cell.TitleLabel.text = myGroup.groupName
+//        cell.thumbnailImageView.image = UIImage(named: myGroup.image)
     
         return cell
     }

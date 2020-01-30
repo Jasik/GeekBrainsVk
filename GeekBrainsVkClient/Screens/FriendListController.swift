@@ -80,7 +80,7 @@ extension FriendListController: UITableViewDataSource {
         let key = friendsSectionName[indexPath.section]
         if let friends = friendsDictionary[key] {
             let friend = friends[indexPath.row]
-            cell.friend = friend
+            
             cell.accessoryType = .disclosureIndicator
         }
         return cell
