@@ -14,11 +14,15 @@
 		9F0E4EF223BA2BC60072FD34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0E4EF123BA2BC60072FD34 /* LoginViewController.swift */; };
 		9F0E4EF423BA347D0072FD34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0E4EF323BA347D0072FD34 /* Assets.xcassets */; };
 		9F0E4EFA23C036D40072FD34 /* LoginScreenTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0E4EF923C036D40072FD34 /* LoginScreenTextField.swift */; };
+		9FF2973723DF0FDD004856E7 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2973623DF0FDD004856E7 /* NSObject+Extension.swift */; };
+		9FF2973923DF106A004856E7 /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2973823DF106A004856E7 /* UIKit+Extension.swift */; };
+		9FF2973B23DF1294004856E7 /* FriendListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2973A23DF1294004856E7 /* FriendListController.swift */; };
+		9FF2973F23E06576004856E7 /* FriendsPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2973E23E06576004856E7 /* FriendsPhotoController.swift */; };
+		9FF2974123E077F9004856E7 /* UserGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2974023E077F9004856E7 /* UserGroupsController.swift */; };
+		9FF2974623E2FE3B004856E7 /* UserGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2974523E2FE3B004856E7 /* UserGroupCell.swift */; };
 		9FFE5F1323CF48B200883D51 /* TestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE5F1223CF48B200883D51 /* TestModels.swift */; };
-		9FFE5F1523CF495500883D51 /* FriendListTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE5F1423CF495500883D51 /* FriendListTableTableViewController.swift */; };
 		9FFE5F1723CF497000883D51 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE5F1623CF497000883D51 /* GroupsTableViewController.swift */; };
 		9FFE5F1923CF4B5500883D51 /* UserGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE5F1823CF4B5500883D51 /* UserGroupTableViewController.swift */; };
-		9FFE5F1B23CF4C5000883D51 /* FriendsPhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE5F1A23CF4C5000883D51 /* FriendsPhotoCollectionViewController.swift */; };
 		9FFE5F4C23D5D21800883D51 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE5F4A23D5D21800883D51 /* CustomCell.swift */; };
 		9FFE5F4D23D5D21800883D51 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FFE5F4B23D5D21800883D51 /* CustomCell.xib */; };
 		9FFE5F5023D5DF8200883D51 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE5F4E23D5DF8200883D51 /* PhotoCell.swift */; };
@@ -38,11 +42,15 @@
 		9F0E4EF123BA2BC60072FD34 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9F0E4EF323BA347D0072FD34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F0E4EF923C036D40072FD34 /* LoginScreenTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenTextField.swift; sourceTree = "<group>"; };
+		9FF2973623DF0FDD004856E7 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		9FF2973823DF106A004856E7 /* UIKit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
+		9FF2973A23DF1294004856E7 /* FriendListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListController.swift; sourceTree = "<group>"; };
+		9FF2973E23E06576004856E7 /* FriendsPhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotoController.swift; sourceTree = "<group>"; };
+		9FF2974023E077F9004856E7 /* UserGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupsController.swift; sourceTree = "<group>"; };
+		9FF2974523E2FE3B004856E7 /* UserGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupCell.swift; sourceTree = "<group>"; };
 		9FFE5F1223CF48B200883D51 /* TestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModels.swift; sourceTree = "<group>"; };
-		9FFE5F1423CF495500883D51 /* FriendListTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableTableViewController.swift; sourceTree = "<group>"; };
 		9FFE5F1623CF497000883D51 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		9FFE5F1823CF4B5500883D51 /* UserGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupTableViewController.swift; sourceTree = "<group>"; };
-		9FFE5F1A23CF4C5000883D51 /* FriendsPhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		9FFE5F4A23D5D21800883D51 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		9FFE5F4B23D5D21800883D51 /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		9FFE5F4E23D5DF8200883D51 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
@@ -82,6 +90,7 @@
 		9F0E4ED323B4F1580072FD34 /* GeekBrainsVkClient */ = {
 			isa = PBXGroup;
 			children = (
+				9FF2973323DF0EDC004856E7 /* Extension */,
 				9FFE5F7A23D9F5D100883D51 /* Controls */,
 				9FFE5F4523D43C9700883D51 /* Views */,
 				9FFE5F1123CF487D00883D51 /* Model */,
@@ -99,10 +108,11 @@
 			children = (
 				9F0E4EDA23B4F1580072FD34 /* Main.storyboard */,
 				9F0E4EF123BA2BC60072FD34 /* LoginViewController.swift */,
-				9FFE5F1423CF495500883D51 /* FriendListTableTableViewController.swift */,
 				9FFE5F1623CF497000883D51 /* GroupsTableViewController.swift */,
 				9FFE5F1823CF4B5500883D51 /* UserGroupTableViewController.swift */,
-				9FFE5F1A23CF4C5000883D51 /* FriendsPhotoCollectionViewController.swift */,
+				9FF2973A23DF1294004856E7 /* FriendListController.swift */,
+				9FF2973E23E06576004856E7 /* FriendsPhotoController.swift */,
+				9FF2974023E077F9004856E7 /* UserGroupsController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -134,6 +144,57 @@
 			path = CustomVIews;
 			sourceTree = "<group>";
 		};
+		9FF2973323DF0EDC004856E7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9FF2973523DF0F42004856E7 /* Foundation */,
+				9FF2973423DF0F33004856E7 /* UIKit */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		9FF2973423DF0F33004856E7 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				9FF2973823DF106A004856E7 /* UIKit+Extension.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		9FF2973523DF0F42004856E7 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				9FF2973623DF0FDD004856E7 /* NSObject+Extension.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		9FF2974223E2FD84004856E7 /* FriendListCell */ = {
+			isa = PBXGroup;
+			children = (
+				9FFE5F4A23D5D21800883D51 /* CustomCell.swift */,
+				9FFE5F4B23D5D21800883D51 /* CustomCell.xib */,
+			);
+			path = FriendListCell;
+			sourceTree = "<group>";
+		};
+		9FF2974323E2FDB1004856E7 /* FriendsPhotoCell */ = {
+			isa = PBXGroup;
+			children = (
+				9FFE5F4E23D5DF8200883D51 /* PhotoCell.swift */,
+				9FFE5F4F23D5DF8200883D51 /* PhotoCell.xib */,
+			);
+			path = FriendsPhotoCell;
+			sourceTree = "<group>";
+		};
+		9FF2974423E2FDD1004856E7 /* UserGroupsCell */ = {
+			isa = PBXGroup;
+			children = (
+				9FF2974523E2FE3B004856E7 /* UserGroupCell.swift */,
+			);
+			path = UserGroupsCell;
+			sourceTree = "<group>";
+		};
 		9FFE5F1123CF487D00883D51 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,10 +206,9 @@
 		9FFE5F4523D43C9700883D51 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9FFE5F4A23D5D21800883D51 /* CustomCell.swift */,
-				9FFE5F4B23D5D21800883D51 /* CustomCell.xib */,
-				9FFE5F4E23D5DF8200883D51 /* PhotoCell.swift */,
-				9FFE5F4F23D5DF8200883D51 /* PhotoCell.xib */,
+				9FF2974423E2FDD1004856E7 /* UserGroupsCell */,
+				9FF2974323E2FDB1004856E7 /* FriendsPhotoCell */,
+				9FF2974223E2FD84004856E7 /* FriendListCell */,
 				9FFE5F5223D6016B00883D51 /* GroupCell.swift */,
 			);
 			path = Views;
@@ -235,19 +295,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FF2974123E077F9004856E7 /* UserGroupsController.swift in Sources */,
+				9FF2973F23E06576004856E7 /* FriendsPhotoController.swift in Sources */,
 				9FFE5F7C23D9F60D00883D51 /* LikeMeter.swift in Sources */,
 				9FFE5F1923CF4B5500883D51 /* UserGroupTableViewController.swift in Sources */,
-				9FFE5F1523CF495500883D51 /* FriendListTableTableViewController.swift in Sources */,
 				9FFE5F4C23D5D21800883D51 /* CustomCell.swift in Sources */,
 				9FFE5F5323D6016B00883D51 /* GroupCell.swift in Sources */,
+				9FF2973723DF0FDD004856E7 /* NSObject+Extension.swift in Sources */,
 				9F0E4EFA23C036D40072FD34 /* LoginScreenTextField.swift in Sources */,
 				9F0E4EF223BA2BC60072FD34 /* LoginViewController.swift in Sources */,
-				9FFE5F1B23CF4C5000883D51 /* FriendsPhotoCollectionViewController.swift in Sources */,
 				9FFE5F1723CF497000883D51 /* GroupsTableViewController.swift in Sources */,
+				9FF2974623E2FE3B004856E7 /* UserGroupCell.swift in Sources */,
 				9F0E4ED523B4F1580072FD34 /* AppDelegate.swift in Sources */,
 				9FFE5F1323CF48B200883D51 /* TestModels.swift in Sources */,
+				9FF2973B23DF1294004856E7 /* FriendListController.swift in Sources */,
 				9FFE5F5723D9D74400883D51 /* ShadowView.swift in Sources */,
 				9FFE5F5023D5DF8200883D51 /* PhotoCell.swift in Sources */,
+				9FF2973923DF106A004856E7 /* UIKit+Extension.swift in Sources */,
 				9F0E4ED723B4F1580072FD34 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
