@@ -35,6 +35,7 @@ class LikeMeter: UIControl {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 13, weight: .bold)
         label.text = "0"
+        label.textColor = .gray
         return label
     }()
            
