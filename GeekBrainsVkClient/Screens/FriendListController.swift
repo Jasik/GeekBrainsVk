@@ -11,15 +11,16 @@ import UIKit
 class FriendListController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     private let friends: [User] = [
-           User(id: 3, name: "Rogozhkin Vladimir", image: ["00", "00", "00"]),
-           User(id: 1, name: "Jonny Depp", image: ["j01", "j02", "j03"]),
-           User(id: 2, name: "Bred Pitt", image: ["b01", "b02", "b03"]),
-           User(id: 4, name: "Armano", image: ["00", "00", "00"]),
-           User(id: 5, name: "Jonny Pit", image: ["b01", "j02", "j03"])
+           User(name: "Rogozhkin Vladimir", image: ["00", "00", "00"]),
+           User(name: "Jonny Depp", image: ["j01", "j02", "j03"]),
+           User(name: "Bred Pitt", image: ["b01", "b02", "b03"]),
+           User(name: "Armano", image: ["00", "00", "00"]),
+           User(name: "Jonny Pit", image: ["b01", "j02", "j03"])
     ]
-    
+    private var filteredData: [String: [User]] = [:]
     private var friendsDictionary = [String: [User]]()
     private var friendsSectionName = [String]()
     
