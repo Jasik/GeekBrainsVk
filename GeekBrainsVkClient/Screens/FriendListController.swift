@@ -34,6 +34,8 @@ class FriendListController: UIViewController {
         setupTable()
         getSectionTitle()
         sortSectionTitle()
+        setupSearchBar()
+        tableView.reloadData()
     }
     
     private func setupTable() {
@@ -41,6 +43,10 @@ class FriendListController: UIViewController {
         tableView.dataSource = self
         
         tableView.registerXib(cellClass: CustomCell.self)
+    }
+    
+    private func setupSearchBar() {
+        searchBar.delegate = self
     }
     
     private func setupTitle() {
