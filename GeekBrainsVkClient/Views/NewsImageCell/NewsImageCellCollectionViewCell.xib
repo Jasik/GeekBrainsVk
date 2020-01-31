@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="421" height="395"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cAo-Hg-YQ9">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m2" translatesAutoresizingMaskIntoConstraints="NO" id="cAo-Hg-YQ9">
                         <rect key="frame" x="0.0" y="0.0" width="421" height="395"/>
                     </imageView>
                 </subviews>
@@ -29,7 +29,13 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="421" height="395"/>
+            <connections>
+                <outlet property="newImageView" destination="cAo-Hg-YQ9" id="yoW-TC-uio"/>
+            </connections>
             <point key="canvasLocation" x="-131.15942028985509" y="223.32589285714283"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="m2" width="1280" height="720"/>
+    </resources>
 </document>
