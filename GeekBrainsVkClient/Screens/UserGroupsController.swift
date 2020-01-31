@@ -44,7 +44,7 @@ class UserGroupsController: UIViewController {
                 return
             }
             if let indexPath = groupsTableViewController.tableView.indexPathForSelectedRow {
-                let myGroup = groupsTableViewController.groups[indexPath.row]
+                let myGroup = groupsTableViewController.filteredData[indexPath.row]
                 if !myGroups.contains(where: { $0.groupID == myGroup.groupID }) {
                     myGroups.append(myGroup)
                 }
