@@ -10,8 +10,9 @@ import UIKit
 
 class NewsImageCellCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var newImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
 }
