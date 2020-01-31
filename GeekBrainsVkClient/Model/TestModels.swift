@@ -18,3 +18,13 @@ struct Group {
     let groupID: Int
     let groupName, image: String
 }
+
+struct News {
+    let id = UUID()
+    let avatar: String
+    let author: String
+    let date: String
+    let contentText: String
+    let image: [String]
+}
+
