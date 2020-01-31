@@ -363,17 +363,32 @@
             </objects>
             <point key="canvasLocation" x="5664" y="126"/>
         </scene>
-        <!--View Controller-->
+        <!--News Controller-->
         <scene sceneID="D6o-8B-sLE">
             <objects>
-                <viewController id="IKu-Em-azG" sceneMemberID="viewController">
+                <viewController id="IKu-Em-azG" customClass="NewsController" customModule="GeekBrainsVkClient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v5Q-KW-mHv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-5A-Zpt">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DW1-5A-Zpt" firstAttribute="top" secondItem="u8Z-gb-2L8" secondAttribute="top" id="Lpv-xj-6jW"/>
+                            <constraint firstItem="u8Z-gb-2L8" firstAttribute="bottom" secondItem="DW1-5A-Zpt" secondAttribute="bottom" id="nMp-h3-0Ge"/>
+                            <constraint firstItem="DW1-5A-Zpt" firstAttribute="leading" secondItem="u8Z-gb-2L8" secondAttribute="leading" id="pRf-Z6-ogS"/>
+                            <constraint firstItem="u8Z-gb-2L8" firstAttribute="trailing" secondItem="DW1-5A-Zpt" secondAttribute="trailing" id="s09-rN-NNO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="u8Z-gb-2L8"/>
                     </view>
                     <navigationItem key="navigationItem" id="ni3-81-UbQ"/>
+                    <connections>
+                        <outlet property="tableView" destination="DW1-5A-Zpt" id="t81-4O-uKk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sYD-FR-hiX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
