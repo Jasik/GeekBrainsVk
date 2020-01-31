@@ -74,7 +74,7 @@ extension FriendListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let key = friendsSectionName[section]
-        if let friends = friendsDictionary[key] {
+        if let friends = filteredData[key] {
             return friends.count
         }
         return 0
@@ -85,7 +85,7 @@ extension FriendListController: UITableViewDataSource {
             fatalError()
         }
         let key = friendsSectionName[indexPath.section]
-        if let friends = friendsDictionary[key] {
+        if let friends = filteredData[key] {
             let friend = friends[indexPath.row]
             cell.thumbnailImageView.image = UIImage(named: friend.image.first ?? "00")
             cell.TitleLabel.text = friend.name
@@ -116,6 +116,7 @@ extension FriendListController: UITableViewDataSource {
 extension FriendListController {
     
     private func getSectionTitle() {
+        
         for friend in friends {
             let friendKey = String(friend.name.prefix(1))
             if var friendValues = friendsDictionary[friendKey] {
@@ -125,10 +126,35 @@ extension FriendListController {
                 friendsDictionary[friendKey] = [friend]
             }
         }
+        filteredData = friendsDictionary
+        tableView.reloadData()
     }
     
     private func sortSectionTitle() {
-        friendsSectionName = [String](friendsDictionary.keys)
-        friendsSectionName = friendsSectionName.sorted(by: { $0 < $1 })
+        
+        friendsSectionName.removeAll()
+        
+        for key in filteredData.keys {
+            if filteredData[key]?.count != 0 {
+                friendsSectionName.append(key)
+                friendsSectionName = friendsSectionName.sorted(by: { $0 < $1 })
+            }
+        }
+    }
+}
+
+extension FriendListController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredData.removeAll()
+        
+        filteredData = searchText.isEmpty ? friendsDictionary : friendsDictionary.compactMapValues { user in
+            user.filter({(friend: User) -> Bool in
+                return friend.name.range(of: searchText, options: .caseInsensitive) != nil
+            })
+        }
+        sortSectionTitle()
+        tableView.reloadData()
     }
 }
