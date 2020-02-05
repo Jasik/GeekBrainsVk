@@ -87,7 +87,7 @@ extension FriendListController: UITableViewDataSource {
         let key = friendsSectionName[indexPath.section]
         if let friends = filteredData[key] {
             let friend = friends[indexPath.row]
-            cell.thumbnailImageView.image = UIImage(named: friend.image.first ?? "00")
+            cell.thumbImageView.image = UIImage(named: friend.image.first ?? "00")
             cell.TitleLabel.text = friend.name
             cell.accessoryType = .disclosureIndicator
         }
@@ -156,5 +156,15 @@ extension FriendListController: UISearchBarDelegate {
         }
         sortSectionTitle()
         tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
 }

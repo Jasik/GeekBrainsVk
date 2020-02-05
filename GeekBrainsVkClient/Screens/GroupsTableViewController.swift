@@ -58,4 +58,14 @@ extension GroupsTableViewController: UISearchBarDelegate {
         })
         tableView.reloadData()
     }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+   
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
 }
