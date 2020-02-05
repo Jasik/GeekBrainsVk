@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeX-Am-X9X" userLabel="shadow View" customClass="ShadowView" customModule="GeekBrainsVkClient" customModuleProvider="target">
                         <rect key="frame" x="10" y="4" width="72" height="72"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="00" translatesAutoresizingMaskIntoConstraints="NO" id="tRF-uB-URR">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="00" translatesAutoresizingMaskIntoConstraints="NO" id="tRF-uB-URR" customClass="SpringImage" customModule="GeekBrainsVkClient" customModuleProvider="target">
                                 <rect key="frame" x="3.5" y="3.5" width="65" height="65"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="radius">
@@ -77,7 +77,7 @@
             <connections>
                 <outlet property="TitleLabel" destination="Kc7-c8-Em8" id="dmq-fo-P7o"/>
                 <outlet property="shadowView" destination="eeX-Am-X9X" id="s9f-E8-Lyy"/>
-                <outlet property="thumbnailImageView" destination="tRF-uB-URR" id="sGI-K9-b7F"/>
+                <outlet property="thumbImageView" destination="tRF-uB-URR" id="F7V-8N-JXV"/>
             </connections>
             <point key="canvasLocation" x="114.49275362318842" y="46.205357142857139"/>
         </tableViewCell>
