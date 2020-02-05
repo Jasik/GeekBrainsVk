@@ -12,19 +12,26 @@ class SplashView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.view.backgroundColor = UIColor(named: "BackgroundDarkAndLightColor")
+        
+        let layer = CAReplicatorLayer()
+        layer.frame = CGRect(x: 0,y: 0,width: 50,height: 10)
+        let dot = CALayer()
+        dot.frame = CGRect(x: 0,y: 0,width: 10,height: 10)
+        dot.backgroundColor = UIColor(named: "noActiveButtonColor")?.cgColor
+        dot.cornerRadius = dot.frame.width / 2
+        layer.addSublayer(dot)
+        layer.instanceCount = 3
+        layer.instanceTransform = CATransform3DMakeTranslation(20, 0, 0)
+        let animation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animation.fromValue = 1.0
+        animation.toValue = 0.0
+        animation.duration = 1
+        animation.repeatCount = .infinity
+        dot.add(animation, forKey: nil)
+        layer.instanceDelay = animation.duration / Double(layer.instanceCount)
+        view.layer.addSublayer(layer)
+        layer.position = CGPoint(x: self.view.layer.bounds.midX, y: self.view.layer.bounds.midY)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
