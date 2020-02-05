@@ -16,26 +16,29 @@ class LikeMeter: UIControl {
         return recognizer
     }()
         
-    @objc func onTap() {
-        if flag == false {
-            likeCount.text = "0"
-            likeImage.tintColor = .gray
-            flag = true
-        } else if flag == true {
-            likeCount.text = "1"
-            likeImage.tintColor = .red
-            flag = false
-        }
-    }
-        
     private var flag: Bool = false
     
+    @objc func onTap() {
+        
+        flag.toggle()
+        likeCount.text = flag ? "1" : "0"
+        likeImage.tintColor = flag ? .red : .gray
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.likeCount.frame.origin.y = self.flag ? -40 : 20
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.5, animations: {
+                self.likeCount.alpha = 1
+            })
+        })
+    }
+        
     fileprivate let likeCount: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 13, weight: .bold)
         label.text = "0"
-        label.textColor = .gray
+        label.textColor = UIColor(named: "placeholder_color")
         return label
     }()
            
