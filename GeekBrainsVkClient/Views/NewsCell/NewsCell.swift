@@ -82,7 +82,7 @@ extension NewsCell: UICollectionViewDataSource {
 }
 
 extension NewsCell: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = collectionView.frame.size
         return size
