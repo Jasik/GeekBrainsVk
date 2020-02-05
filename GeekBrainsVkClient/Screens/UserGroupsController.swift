@@ -67,7 +67,7 @@ extension UserGroupsController: UITableViewDataSource {
             fatalError()
         }
         let myGroup = myGroups[indexPath.row]
-        cell.thumbnailImageView.image = UIImage(named: myGroup.image)
+        cell.thumbImageView.image = UIImage(named: myGroup.image)
         cell.TitleLabel.text = myGroup.groupName
         
         return cell
