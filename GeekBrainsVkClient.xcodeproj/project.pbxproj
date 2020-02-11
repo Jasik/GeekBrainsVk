@@ -17,8 +17,6 @@
 		9FE0441723E99FD000035826 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0441623E99FD000035826 /* SplashView.swift */; };
 		9FE0442623EAE77F00035826 /* SpringImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0442523EAE77F00035826 /* SpringImage.swift */; };
 		9FE0442823EDA89100035826 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0442723EDA89100035826 /* DetailView.swift */; };
-		9FE0442A23EDB11F00035826 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0442923EDB11F00035826 /* Slide.swift */; };
-		9FE0442C23EDC5B500035826 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FE0442B23EDC5B500035826 /* Slide.xib */; };
 		9FF2973723DF0FDD004856E7 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2973623DF0FDD004856E7 /* NSObject+Extension.swift */; };
 		9FF2973923DF106A004856E7 /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2973823DF106A004856E7 /* UIKit+Extension.swift */; };
 		9FF2973B23DF1294004856E7 /* FriendListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2973A23DF1294004856E7 /* FriendListController.swift */; };
@@ -53,8 +51,6 @@
 		9FE0441623E99FD000035826 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		9FE0442523EAE77F00035826 /* SpringImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringImage.swift; sourceTree = "<group>"; };
 		9FE0442723EDA89100035826 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		9FE0442923EDB11F00035826 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
-		9FE0442B23EDC5B500035826 /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		9FF2973623DF0FDD004856E7 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		9FF2973823DF106A004856E7 /* UIKit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
 		9FF2973A23DF1294004856E7 /* FriendListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListController.swift; sourceTree = "<group>"; };
@@ -240,8 +236,6 @@
 				9FF2974223E2FD84004856E7 /* FriendListCell */,
 				9FF2974323E2FDB1004856E7 /* FriendsPhotoCell */,
 				9FFE5F5223D6016B00883D51 /* GroupCell.swift */,
-				9FE0442923EDB11F00035826 /* Slide.swift */,
-				9FE0442B23EDC5B500035826 /* Slide.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,7 +309,6 @@
 				9FF2974F23E44836004856E7 /* NewsCell.xib in Resources */,
 				9F0E4EE123B4F15A0072FD34 /* LaunchScreen.storyboard in Resources */,
 				9FF2975323E44868004856E7 /* NewsImageCellCollectionViewCell.xib in Resources */,
-				9FE0442C23EDC5B500035826 /* Slide.xib in Resources */,
 				9F0E4EF423BA347D0072FD34 /* Assets.xcassets in Resources */,
 				9FFE5F4D23D5D21800883D51 /* CustomCell.xib in Resources */,
 				9F0E4EDC23B4F1580072FD34 /* Main.storyboard in Resources */,
@@ -331,7 +324,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FF2974823E31439004856E7 /* UserGroupsController.swift in Sources */,
-				9FE0442A23EDB11F00035826 /* Slide.swift in Sources */,
 				9FF2973F23E06576004856E7 /* FriendsPhotoController.swift in Sources */,
 				9FFE5F7C23D9F60D00883D51 /* LikeMeter.swift in Sources */,
 				9FFE5F4C23D5D21800883D51 /* CustomCell.swift in Sources */,
