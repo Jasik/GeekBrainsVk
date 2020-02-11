@@ -10,7 +10,7 @@ import UIKit
 
 class CustomCell: UITableViewCell {
 
-    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var thumbImageView: SpringImage!
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var shadowView: ShadowView!
     
@@ -22,7 +22,7 @@ class CustomCell: UITableViewCell {
     }
     
     func setupImageUI() {
-        thumbnailImageView.layer.cornerRadius = thumbnailImageView.bounds.width / 2
+        thumbImageView.layer.cornerRadius = thumbImageView.bounds.width / 2
     }
     
     func setupShadowView() {
