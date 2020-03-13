@@ -16,6 +16,7 @@
 		9F0E4EFA23C036D40072FD34 /* LoginScreenTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0E4EF923C036D40072FD34 /* LoginScreenTextField.swift */; };
 		9FE0441723E99FD000035826 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0441623E99FD000035826 /* SplashView.swift */; };
 		9FE0442623EAE77F00035826 /* SpringImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0442523EAE77F00035826 /* SpringImage.swift */; };
+		9FE0442823EDA89100035826 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0442723EDA89100035826 /* DetailView.swift */; };
 		9FF2973723DF0FDD004856E7 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2973623DF0FDD004856E7 /* NSObject+Extension.swift */; };
 		9FF2973923DF106A004856E7 /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2973823DF106A004856E7 /* UIKit+Extension.swift */; };
 		9FF2973B23DF1294004856E7 /* FriendListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2973A23DF1294004856E7 /* FriendListController.swift */; };
@@ -49,6 +50,7 @@
 		9F0E4EF923C036D40072FD34 /* LoginScreenTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenTextField.swift; sourceTree = "<group>"; };
 		9FE0441623E99FD000035826 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		9FE0442523EAE77F00035826 /* SpringImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringImage.swift; sourceTree = "<group>"; };
+		9FE0442723EDA89100035826 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		9FF2973623DF0FDD004856E7 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		9FF2973823DF106A004856E7 /* UIKit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
 		9FF2973A23DF1294004856E7 /* FriendListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				9FF2974723E31439004856E7 /* UserGroupsController.swift */,
 				9FF2974923E446D7004856E7 /* NewsController.swift */,
 				9FE0441623E99FD000035826 /* SplashView.swift */,
+				9FE0442723EDA89100035826 /* DetailView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -230,8 +233,8 @@
 			children = (
 				9FF2975423E4486E004856E7 /* NewsImageCell */,
 				9FF2974B23E44802004856E7 /* NewsCell */,
-				9FF2974323E2FDB1004856E7 /* FriendsPhotoCell */,
 				9FF2974223E2FD84004856E7 /* FriendListCell */,
+				9FF2974323E2FDB1004856E7 /* FriendsPhotoCell */,
 				9FFE5F5223D6016B00883D51 /* GroupCell.swift */,
 			);
 			path = Views;
@@ -325,6 +328,7 @@
 				9FFE5F7C23D9F60D00883D51 /* LikeMeter.swift in Sources */,
 				9FFE5F4C23D5D21800883D51 /* CustomCell.swift in Sources */,
 				9FFE5F5323D6016B00883D51 /* GroupCell.swift in Sources */,
+				9FE0442823EDA89100035826 /* DetailView.swift in Sources */,
 				9FF2973723DF0FDD004856E7 /* NSObject+Extension.swift in Sources */,
 				9F0E4EFA23C036D40072FD34 /* LoginScreenTextField.swift in Sources */,
 				9F0E4EF223BA2BC60072FD34 /* LoginViewController.swift in Sources */,

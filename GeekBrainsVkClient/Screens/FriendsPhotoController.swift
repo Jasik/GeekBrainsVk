@@ -35,7 +35,15 @@ class FriendsPhotoController: UIViewController {
     }
 }
 
-extension FriendsPhotoController: UICollectionViewDelegate { }
+extension FriendsPhotoController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailView = storyboard?.instantiateViewController(identifier: "DetailView") as! DetailView
+        if let photos = friend?.image {
+            detailView.photos = photos
+        }
+        self.navigationController?.pushViewController(detailView, animated: true)
+    }
+}
 
 extension FriendsPhotoController: UICollectionViewDataSource {
     
