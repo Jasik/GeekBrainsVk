@@ -1,0 +1,6 @@
+framework module Pods_GeekBrainsVkClient {
+  umbrella header "Pods-GeekBrainsVkClient-umbrella.h"
+
+  export *
+  module * { export * }
+}
