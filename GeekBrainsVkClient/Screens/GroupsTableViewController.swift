@@ -10,7 +10,9 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak private var searchBar: UISearchBar!
+    
+    private let api = API()
     
     let groups = [
         Group(groupID: 1, groupName: "I like Android", image: "android"),
@@ -25,6 +27,8 @@ class GroupsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         setupSearchBar()
+        
+        api.fetchSearched(group: "the station")
     }
 
     private func setupSearchBar() {
