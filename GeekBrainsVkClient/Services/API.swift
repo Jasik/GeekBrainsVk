@@ -78,4 +78,19 @@ struct API {
         }
     }
 
+    func fetchSearched(group: String) {
+        let path = "/method/groups.search"
+        let parameters: Parameters = [
+            "q" : group,
+            "type" : "group",
+            "access_token" : token,
+            "v" : version
+        ]
+           
+        let url = baseURL + path
+        AF.request(url, parameters: parameters).responseJSON { response in
+            print("response: Photos         :        \(response)")
+        }
+    }
+    
 }
