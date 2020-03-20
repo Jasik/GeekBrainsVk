@@ -28,5 +28,12 @@ class Login: UIViewController {
         
         self.navigationController?.navigationBar.isHidden = true
     }
-  
+    
+    private func transitionAfterReceivingAToken() {
+        
+        if let tabBarMenu = storyboard?.instantiateViewController(withIdentifier: "TabBarMenu") as? UITabBarController {
+            navigationController?.pushViewController(tabBarMenu, animated: true)
+        }
+    }
+    
 }
