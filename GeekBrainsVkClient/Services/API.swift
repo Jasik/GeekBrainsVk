@@ -94,3 +94,46 @@ struct API {
     }
     
 }
+
+  /// TODO: create a normal manager
+    
+//    enum EndPoint {
+//        static let authURL = URL(string: "https://oauth.vk.com/")!
+//
+//        case oauth
+//
+//        var url: URL {
+//            switch self {
+//            case .oauth:
+//                return EndPoint.authURL
+//            }
+//        }
+//    }
+
+//enum MetodAndParameters {
+//     case friends
+//     case photos
+//     case groups
+//
+//     func method() -> String {
+//         switch self {
+//         case .friends:
+//             return "friends.get"
+//         case .photos:
+//             return "photos.getAll"
+//         case .groups:
+//             return "groups.get"
+//         }
+//     }
+//
+//     func parameters() -> Parameters {
+//         switch self {
+//         case .friends:
+//             return [:]
+//         case .photos:
+//             return [:]
+//         case .groups:
+//             return [:]
+//         }
+//     }
+// }
