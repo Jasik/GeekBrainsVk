@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import WebKit
 
 class Login: UIViewController {
 
+    @IBOutlet private weak var loginWebView: WKWebView! {
+        didSet {
+            loginWebView.navigationDelegate = self
+        }
+    }
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
