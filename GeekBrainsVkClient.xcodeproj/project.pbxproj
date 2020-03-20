@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		9F0E4EF423BA347D0072FD34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0E4EF323BA347D0072FD34 /* Assets.xcassets */; };
 		9F0E4EFA23C036D40072FD34 /* LoginScreenTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0E4EF923C036D40072FD34 /* LoginScreenTextField.swift */; };
 		9F2D99F1241BA97B006BD8CE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2D99F0241BA97B006BD8CE /* Session.swift */; };
+		9F2D99F3241FB805006BD8CE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2D99F2241FB805006BD8CE /* Login.swift */; };
+		9F2D99F5241FD83D006BD8CE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2D99F4241FD83D006BD8CE /* API.swift */; };
 		9FE0441723E99FD000035826 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0441623E99FD000035826 /* SplashView.swift */; };
 		9FE0442623EAE77F00035826 /* SpringImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0442523EAE77F00035826 /* SpringImage.swift */; };
 		9FE0442823EDA89100035826 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0442723EDA89100035826 /* DetailView.swift */; };
@@ -54,6 +56,8 @@
 		9F0E4EF323BA347D0072FD34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F0E4EF923C036D40072FD34 /* LoginScreenTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenTextField.swift; sourceTree = "<group>"; };
 		9F2D99F0241BA97B006BD8CE /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		9F2D99F2241FB805006BD8CE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		9F2D99F4241FD83D006BD8CE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9FE0441623E99FD000035826 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		9FE0442523EAE77F00035826 /* SpringImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringImage.swift; sourceTree = "<group>"; };
 		9FE0442723EDA89100035826 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -104,7 +108,6 @@
 				7F756A0B764E97D5A5A6F316 /* Pods-GeekBrainsVkClient.debug.xcconfig */,
 				64F3C8BAD28254D4BD5B6F54 /* Pods-GeekBrainsVkClient.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -155,6 +158,7 @@
 				9FF2974923E446D7004856E7 /* NewsController.swift */,
 				9FE0441623E99FD000035826 /* SplashView.swift */,
 				9FE0442723EDA89100035826 /* DetailView.swift */,
+				9F2D99F2241FB805006BD8CE /* Login.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -191,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				9F2D99F0241BA97B006BD8CE /* Session.swift */,
+				9F2D99F4241FD83D006BD8CE /* API.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -418,9 +423,11 @@
 				9FFE5F1323CF48B200883D51 /* TestModels.swift in Sources */,
 				9FF2973B23DF1294004856E7 /* FriendListController.swift in Sources */,
 				9FF2975223E44868004856E7 /* NewsImageCellCollectionViewCell.swift in Sources */,
+				9F2D99F3241FB805006BD8CE /* Login.swift in Sources */,
 				9FE0442623EAE77F00035826 /* SpringImage.swift in Sources */,
 				9FF2974A23E446D7004856E7 /* NewsController.swift in Sources */,
 				9FFE5F5723D9D74400883D51 /* ShadowView.swift in Sources */,
+				9F2D99F5241FD83D006BD8CE /* API.swift in Sources */,
 				9FFE5F5023D5DF8200883D51 /* PhotoCell.swift in Sources */,
 				9F2D99F1241BA97B006BD8CE /* Session.swift in Sources */,
 				9FF2973923DF106A004856E7 /* UIKit+Extension.swift in Sources */,
