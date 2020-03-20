@@ -64,7 +64,7 @@ struct API {
         }
     }
     
-    func fetchUsetPhoto() {
+    func fetchUserPhoto() {
         let path = "/method/photos.getAll"
         let parameters: Parameters = [
             "owner_id" : "587468244",

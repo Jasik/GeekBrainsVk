@@ -21,7 +21,7 @@ class FriendsPhotoController: UIViewController {
 
         setupColleciton()
         setupTitle()
-        api.fetchUsetPhoto()
+        api.fetchUserPhoto()
     }
     
     private func setupColleciton() {
