@@ -50,5 +50,18 @@ struct API {
         }
     }
     
-  
+    func fetchGroupList() {
+        let path = "/method/groups.get"
+        let parameters: Parameters = [
+            "extended" : 1,
+            "access_token" : token,
+            "v" : version
+        ]
+        
+        let url = baseURL + path
+        AF.request(url, parameters: parameters).responseJSON { response in
+            print("response: Group         :        \(response)")
+        }
+    }
+    
 }
