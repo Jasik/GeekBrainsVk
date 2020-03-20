@@ -12,6 +12,8 @@ class FriendsPhotoController: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    private let api = API()
+    
     var friend: User?
     
     override func viewDidLoad() {
@@ -19,6 +21,7 @@ class FriendsPhotoController: UIViewController {
 
         setupColleciton()
         setupTitle()
+        api.fetchUsetPhoto()
     }
     
     private func setupColleciton() {
