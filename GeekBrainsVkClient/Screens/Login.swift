@@ -17,7 +17,10 @@ class Login: UIViewController {
         }
     }
     
-   
+    private var api = API()
+    
+    private let session = Session.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
