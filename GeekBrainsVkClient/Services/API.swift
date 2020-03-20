@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import Alamofire
+
+struct API {
+    
+    private let token = Session.shared.token
+    
+    private let authURL = "https://oauth.vk.com"
+    private let baseURL = "https://api.vk.com"
+    
+    private let version = "5.103"
+
+    
+}
