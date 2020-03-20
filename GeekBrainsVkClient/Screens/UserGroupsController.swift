@@ -12,6 +12,8 @@ class UserGroupsController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
+    private let api = API()
+    
     var myGroups: [Group] = []
     
     override func viewDidLoad() {
@@ -19,6 +21,7 @@ class UserGroupsController: UIViewController {
         
         setupTitle()
         setupTable()
+        api.fetchGroupList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
