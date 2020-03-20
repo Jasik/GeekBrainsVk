@@ -64,4 +64,18 @@ struct API {
         }
     }
     
+    func fetchUsetPhoto() {
+        let path = "/method/photos.getAll"
+        let parameters: Parameters = [
+            "owner_id" : "587468244",
+            "access_token" : token,
+            "v" : version
+        ]
+           
+        let url = baseURL + path
+        AF.request(url, parameters: parameters).responseJSON { response in
+            print("response: Photos         :        \(response)")
+        }
+    }
+
 }
