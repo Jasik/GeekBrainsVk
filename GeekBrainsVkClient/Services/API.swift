@@ -37,4 +37,18 @@ struct API {
         return URLRequest(url: urlComponents.url!)
     }
     
+    func fetchFriendsList() {
+        let path = "/method/friends.get"
+        let parameters: Parameters = [
+            "access_token" : token,
+            "v" : version
+        ]
+        
+        let url = baseURL + path
+        AF.request(url, parameters: parameters).responseJSON { response in
+            print("response: Friend         :        \(response)")
+        }
+    }
+    
+  
 }
