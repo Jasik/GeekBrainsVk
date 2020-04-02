@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class GroupsTableViewController: UITableViewController {
     
@@ -14,38 +15,52 @@ class GroupsTableViewController: UITableViewController {
     
     private let api = API()
     
-    let groups = [
-        Group(groupID: 1, groupName: "I like Android", image: "android"),
-        Group(groupID: 2, groupName: "Travel", image: "roma"),
-        Group(groupID: 3, groupName: "Japan", image: "japan"),
-        Group(groupID: 4, groupName: "Cars", image: "ferrari")
+    /// TODO: Delete
+    let groupsForTest = [
+        TesrGroups(groupID: 1, groupName: "I like Android", image: "android"),
+        TesrGroups(groupID: 2, groupName: "Travel", image: "roma"),
+        TesrGroups(groupID: 3, groupName: "Japan", image: "japan"),
+        TesrGroups(groupID: 4, groupName: "Cars", image: "ferrari")
     ]
     
-    var filteredData: [Group]!
+    var groups: [Group] = []
+    
+    var filteredData: [TesrGroups]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupSearchBar()
         
-        api.fetchSearched(group: "the station")
+        api.fetchSearched(group: "the station", { [weak self] groups in
+            self?.groups = groups
+            self?.tableView.reloadData()
+        })
     }
-
+    
     private func setupSearchBar() {
         searchBar.delegate = self
-        filteredData = groups
+        filteredData = groupsForTest
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredData.count
+        /// TODO: update filter
+//        return filteredData.count
+        return groups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupCell
 
-        let group = filteredData[indexPath.row]
-        cell.groupName.text = group.groupName
-        cell.groupThumnailImageView.image = UIImage(named: group.image)
+        /// TODO: Delete
+//        let group = filteredData[indexPath.row]
+//        cell.groupName.text = group.groupName
+//        cell.groupThumnailImageView.image = UIImage(named: group.image)
+        
+        let group = groups[indexPath.row]
+        let url = URL(string: group.photo100)
+        cell.groupName.text = group.name
+        cell.groupThumnailImageView.kf.setImage(with: url)
         
         return cell
     }
@@ -54,10 +69,12 @@ class GroupsTableViewController: UITableViewController {
         return 80
     }
 }
+
+/// TODO: Update filter
 extension GroupsTableViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredData = searchText.isEmpty ? groups : groups.filter({(groupName: Group) -> Bool in
+        filteredData = searchText.isEmpty ? groupsForTest : groupsForTest.filter({(groupName: TesrGroups) -> Bool in
             return groupName.groupName.range(of: searchText, options: .caseInsensitive) != nil
         })
         tableView.reloadData()
