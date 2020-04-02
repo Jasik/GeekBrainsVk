@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UserGroupsController: UIViewController {
     
@@ -14,20 +15,25 @@ class UserGroupsController: UIViewController {
     
     private let api = API()
     
-    var myGroups: [Group] = []
+    /// TODO: Delete
+    var myGroups: [TesrGroups] = []
+    var groups: [Group] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTitle()
         setupTable()
-        api.fetchGroupList()
+        api.fetchGroupList( { [weak self] groups in
+            self?.groups = groups
+            self?.tableView.reloadData()
+        } )
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.separatorStyle = myGroups.isEmpty ? .none : .singleLine
+        tableView.separatorStyle = groups.isEmpty ? .none : .singleLine
     }
     
     private func setupTitle() {
@@ -62,16 +68,17 @@ extension UserGroupsController: UITableViewDelegate { }
 extension UserGroupsController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myGroups.count
+        return groups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.className, for: indexPath) as? CustomCell else {
             fatalError()
         }
-        let myGroup = myGroups[indexPath.row]
-        cell.thumbImageView.image = UIImage(named: myGroup.image)
-        cell.TitleLabel.text = myGroup.groupName
+        let group = groups[indexPath.row]
+        let url = URL(string: group.photo100)
+        cell.thumbImageView.kf.setImage(with: url)
+        cell.TitleLabel.text = group.name
         
         return cell
     }
@@ -82,9 +89,9 @@ extension UserGroupsController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            myGroups.remove(at: indexPath.row)
+            groups.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            if myGroups.isEmpty {
+            if groups.isEmpty {
                 tableView.separatorStyle = .none
             }
         }
