@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FriendsPhotoController: UIViewController {
 
@@ -14,14 +15,21 @@ class FriendsPhotoController: UIViewController {
     
     private let api = API()
     
-    var friend: User?
+    var friendtest: User?
+    
+    var friend: Friend?
+       
+    var userPhotos: [Photo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupColleciton()
         setupTitle()
-        api.fetchUserPhoto()
+        api.fetchUserPhoto({ [weak self] photos  in
+            self?.userPhotos = photos
+            self?.collectionView.reloadData()
+        })
     }
     
     private func setupColleciton() {
@@ -32,8 +40,8 @@ class FriendsPhotoController: UIViewController {
     }
     
     private func setupTitle() {
-        if let friendName = friend?.name {
-            navigationItem.title = friendName
+        if let firstName = friend?.firstName, let lastName = friend?.lastName {
+            navigationItem.title = lastName + " " + firstName
         }
     }
 }
@@ -41,8 +49,8 @@ class FriendsPhotoController: UIViewController {
 extension FriendsPhotoController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailView = storyboard?.instantiateViewController(identifier: "DetailView") as! DetailView
-        if let photos = friend?.image {
-            detailView.photos = photos
+        if let photos = friend?.photo100 {
+            detailView.photos = [photos]
         }
         self.navigationController?.pushViewController(detailView, animated: true)
     }
@@ -51,16 +59,21 @@ extension FriendsPhotoController: UICollectionViewDelegate {
 extension FriendsPhotoController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return friend?.image.count ?? 0
+//        return friend?.image.count ?? 0
+        return userPhotos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.className, for: indexPath) as? PhotoCell else {
             fatalError()
         }
-        if let friendPhoto = friend?.image {
-            cell.photoImageView.image = UIImage(named: friendPhoto[indexPath.row])
-        }
+//        if let friendPhoto = friend?.image {
+//
+//            cell.photoImageView.image = UIImage(named: friendPhoto[indexPath.row])
+//        }
+        let photo = userPhotos[indexPath.row]
+        let url = URL(string: photo.sizes[3].url)
+        cell.photoImageView.kf.setImage(with: url)
         return cell
     }
 }
