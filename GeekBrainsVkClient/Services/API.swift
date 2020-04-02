@@ -37,20 +37,38 @@ struct API {
         return URLRequest(url: urlComponents.url!)
     }
     
-    func fetchFriendsList() {
+    func fetchFriendsList(_ completion: @escaping ([Friend]) -> Void) {
         let path = "/method/friends.get"
         let parameters: Parameters = [
+            "fields" : "nickname, photo_100", 
             "access_token" : token,
             "v" : version
         ]
         
         let url = baseURL + path
-        AF.request(url, parameters: parameters).responseJSON { response in
-            print("response: Friend         :        \(response)")
+//        AF.request(url, parameters: parameters).responseJSON { response in
+//            print("response: Friend         :        \(response)")
+//        }
+        AF.request(url, parameters: parameters).responseData { response in
+            
+            guard let data = response.value else { return }
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            do {
+                let friends = try decoder.decode(FriendsResponse.self, from: data)
+                
+                print(friends.response.items)
+                
+                completion(friends.response.items)
+            } catch {
+                print(error)
+            }
         }
     }
     
-    func fetchGroupList() {
+    func fetchGroupList(_ completion: @escaping ([Group]) -> Void) {
         let path = "/method/groups.get"
         let parameters: Parameters = [
             "extended" : 1,
@@ -59,26 +77,57 @@ struct API {
         ]
         
         let url = baseURL + path
-        AF.request(url, parameters: parameters).responseJSON { response in
-            print("response: Group         :        \(response)")
+
+        AF.request(url, parameters: parameters).responseData { response in
+            
+            guard let data = response.value else { return }
+
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+            do {
+                let groups = try decoder.decode(GroupResponse.self, from: data)
+                
+                print(groups.response.items)
+                
+                completion(groups.response.items)
+            } catch {
+                print(error)
+            }
         }
     }
     
-    func fetchUserPhoto() {
+    func fetchUserPhoto(_ completion: @escaping ([Photo]) -> Void) {
         let path = "/method/photos.getAll"
         let parameters: Parameters = [
             "owner_id" : "587468244",
+            "extended" : 0,
+            "photo_sizes" : 1,
             "access_token" : token,
             "v" : version
         ]
            
         let url = baseURL + path
-        AF.request(url, parameters: parameters).responseJSON { response in
-            print("response: Photos         :        \(response)")
+
+        AF.request(url, parameters: parameters).responseData { response in
+
+            guard let data = response.value else { return }
+
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+            do {
+                let photos = try decoder.decode(PhotoResponse.self, from: data)
+
+                print(photos.response.items)
+                completion(photos.response.items)
+            } catch {
+                print(error)
+            }
         }
     }
 
-    func fetchSearched(group: String) {
+    func fetchSearched(group: String, _ completion: @escaping ([Group]) -> Void) {
         let path = "/method/groups.search"
         let parameters: Parameters = [
             "q" : group,
@@ -88,11 +137,24 @@ struct API {
         ]
            
         let url = baseURL + path
-        AF.request(url, parameters: parameters).responseJSON { response in
-            print("response: Photos         :        \(response)")
+       AF.request(url, parameters: parameters).responseData { response in
+            
+            guard let data = response.value else { return }
+
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+            do {
+                let groups = try decoder.decode(GroupResponse.self, from: data)
+                
+                print(groups.response.items)
+                
+                completion(groups.response.items)
+            } catch {
+                print(error)
+            }
         }
     }
-    
 }
 
   /// TODO: create a normal manager
