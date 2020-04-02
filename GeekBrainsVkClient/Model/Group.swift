@@ -8,7 +8,16 @@
 
 import Foundation
 
-struct GroupTest: Codable {
+struct GroupResponse: Codable {
+    let response: Groups
+}
+
+struct Groups: Codable {
+    let count: Int
+    let items: [Group]
+}
+
+struct Group: Codable {
     let id: Int
     let isAdmin: Int
     let isAdvertiser: Int
