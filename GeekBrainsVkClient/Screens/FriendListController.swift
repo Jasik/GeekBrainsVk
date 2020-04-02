@@ -13,6 +13,8 @@ class FriendListController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    private let api = API()
+    
     private let friends: [User] = [
            User(name: "Rogozhkin Vladimir", image: ["00", "00", "00"]),
            User(name: "Jonny Depp", image: ["j01", "j02", "j03"]),
@@ -35,6 +37,9 @@ class FriendListController: UIViewController {
         getSectionTitle()
         sortSectionTitle()
         setupSearchBar()
+        
+        api.fetchFriendsList()
+        
         tableView.reloadData()
     }
     
