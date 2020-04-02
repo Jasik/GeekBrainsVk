@@ -8,3 +8,21 @@
 
 import Foundation
 
+struct FriendsResponse: Codable {
+    let response: Friends
+}
+
+struct Friends: Codable {
+    let count: Int
+    let items: [Friend]
+}
+
+struct Friend: Codable {
+    let id: Int
+    let firstName: String
+    let lastName: String
+    let isClosed: Bool
+    let canAccessClosed: Bool
+    let nickname: String
+    let photo100: String
+}
