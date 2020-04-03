@@ -18,18 +18,18 @@ class Groups: Codable {
     let items: [Group]
 }
 
-class Group: Object, Codable {
-    @objc dynamic let id: Int
-    @objc dynamic let isAdmin: Int
-    @objc dynamic let isAdvertiser: Int
-    @objc dynamic let isClosed: Int
-    @objc dynamic let isMember: Int
-    @objc dynamic let name: String
-    @objc dynamic let photo100: String
-    @objc dynamic let photo200: String
-    @objc dynamic let photo50: String
-    @objc dynamic let screenName: String
-    @objc dynamic let type: String
+@objcMembers class Group: Object, Codable {
+    dynamic let id: Int
+    dynamic let isAdmin: Int
+    dynamic let isAdvertiser: Int
+    dynamic let isClosed: Int
+    dynamic let isMember: Int
+    dynamic let name: String
+    dynamic let photo100: String
+    dynamic let photo200: String
+    dynamic let photo50: String
+    dynamic let screenName: String
+    dynamic let type: String
 }
 
 /// TODO: delete

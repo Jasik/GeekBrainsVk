@@ -18,15 +18,15 @@ class Photos: Codable {
     let items: [Photo]
 }
 
-class Photo: Object, Codable {
-    @objc dynamic let id: Int
-    @objc dynamic let ownerId: Int
-    let sizes: [PhotoSize]
-    @objc dynamic let text: String
-    @objc dynamic let date: Date
+@objcMembers class Photo: Object, Codable {
+    dynamic let id: Int
+    dynamic let ownerId: Int
+    dynamic let sizes: [PhotoSize]
+    dynamic let text: String
+    dynamic let date: Date
 }
 
-class PhotoSize:Codable {
+class PhotoSize: Codable {
      let height: Int
      let type: String
      let url: String

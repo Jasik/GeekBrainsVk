@@ -18,14 +18,14 @@ class Friends: Codable {
     let items: [Friend]
 }
 
-class Friend: Object, Codable {
-    @objc dynamic let id: Int
-    @objc dynamic let firstName: String
-    @objc dynamic let lastName: String
-    @objc dynamic let isClosed: Bool
-    @objc dynamic let canAccessClosed: Bool
-    @objc dynamic let nickname: String
-    @objc dynamic let photo100: String
+@objcMembers class Friend: Object, Codable {
+    dynamic let id: Int
+    dynamic let firstName: String
+    dynamic let lastName: String
+    dynamic let isClosed: Bool
+    dynamic let canAccessClosed: Bool
+    dynamic let nickname: String
+    dynamic let photo100: String
 }
 
 /// TODO: delete
