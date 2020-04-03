@@ -7,22 +7,43 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct FriendsResponse: Codable {
+class FriendsResponse: Codable {
     let response: Friends
 }
 
-struct Friends: Codable {
+class Friends: Codable {
     let count: Int
     let items: [Friend]
 }
 
-struct Friend: Codable {
-    let id: Int
-    let firstName: String
-    let lastName: String
-    let isClosed: Bool
-    let canAccessClosed: Bool
-    let nickname: String
-    let photo100: String
+class Friend: Object, Codable {
+    @objc dynamic let id: Int
+    @objc dynamic let firstName: String
+    @objc dynamic let lastName: String
+    @objc dynamic let isClosed: Bool
+    @objc dynamic let canAccessClosed: Bool
+    @objc dynamic let nickname: String
+    @objc dynamic let photo100: String
 }
+
+/// TODO: delete
+//struct FriendsResponse: Codable {
+//    let response: Friends
+//}
+//
+//struct Friends: Codable {
+//    let count: Int
+//    let items: [Friend]
+//}
+//
+//struct Friend: Codable {
+//    let id: Int
+//    let firstName: String
+//    let lastName: String
+//    let isClosed: Bool
+//    let canAccessClosed: Bool
+//    let nickname: String
+//    let photo100: String
+//}
