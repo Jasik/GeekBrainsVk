@@ -7,28 +7,54 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct PhotoResponse: Codable {
+class PhotoResponse: Codable {
     let response: Photos
 }
 
-struct Photos: Codable {
+class Photos: Codable {
     let count: Int
     let items: [Photo]
 }
 
-struct Photo: Codable {
-    let id: Int
-    let ownerId: Int
+class Photo: Object, Codable {
+    @objc dynamic let id: Int
+    @objc dynamic let ownerId: Int
     let sizes: [PhotoSize]
-    let text: String
-    let date: Date
-
+    @objc dynamic let text: String
+    @objc dynamic let date: Date
 }
 
-struct PhotoSize: Codable {
-    let height: Int
-    let type: String
-    let url: String
-    let width: Int
+class PhotoSize:Codable {
+     let height: Int
+     let type: String
+     let url: String
+     let width: Int
 }
+
+/// TODO: delete
+//struct PhotoResponse: Codable {
+//    let response: Photos
+//}
+//
+//struct Photos: Codable {
+//    let count: Int
+//    let items: [Photo]
+//}
+//
+//struct Photo: Codable {
+//    let id: Int
+//    let ownerId: Int
+//    let sizes: [PhotoSize]
+//    let text: String
+//    let date: Date
+//
+//}
+//
+//struct PhotoSize: Codable {
+//    let height: Int
+//    let type: String
+//    let url: String
+//    let width: Int
+//}
