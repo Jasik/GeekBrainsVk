@@ -115,9 +115,9 @@ struct API {
 
             do {
                 let photos = try decoder.decode(PhotoResponse.self, from: data)
-
-                print(photos.response.items)
-                completion(photos.response.items)
+                self.safeData(from: photos.response.items)
+                
+                completion()
             } catch {
                 print(error)
             }
