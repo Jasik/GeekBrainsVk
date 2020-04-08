@@ -38,7 +38,7 @@ struct API {
         return URLRequest(url: urlComponents.url!)
     }
     
-    func fetchFriendsList(_ completion: @escaping ([Friend]) -> Void) {
+    func fetchFriendsList(_ completion: @escaping () -> Void) {
         let path = "/method/friends.get"
         let parameters: Parameters = [
             "fields" : "nickname, photo_100", 
@@ -47,9 +47,7 @@ struct API {
         ]
         
         let url = baseURL + path
-//        AF.request(url, parameters: parameters).responseJSON { response in
-//            print("response: Friend         :        \(response)")
-//        }
+        
         AF.request(url, parameters: parameters).responseData { response in
             
             guard let data = response.value else { return }
@@ -59,17 +57,16 @@ struct API {
             
             do {
                 let friends = try decoder.decode(FriendsResponse.self, from: data)
+                self.safeData(from: friends.response.items)
                 
-                print(friends.response.items)
-                
-                completion(friends.response.items)
+                completion()
             } catch {
                 print(error)
             }
         }
     }
     
-    func fetchGroupList(_ completion: @escaping ([Group]) -> Void) {
+    func fetchGroupList(_ completion: @escaping () -> Void) {
         let path = "/method/groups.get"
         let parameters: Parameters = [
             "extended" : 1,
