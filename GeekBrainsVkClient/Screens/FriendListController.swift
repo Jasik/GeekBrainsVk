@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 class FriendListController: UIViewController {
 
@@ -16,6 +17,7 @@ class FriendListController: UIViewController {
     
     private let api = API()
     
+    /// TODO: Delete
     private let friendstest: [User] = [
            User(name: "Rogozhkin Vladimir", image: ["00", "00", "00"]),
            User(name: "Jonny Depp", image: ["j01", "j02", "j03"]),
@@ -24,7 +26,7 @@ class FriendListController: UIViewController {
            User(name: "Jonny Pit", image: ["b01", "j02", "j03"])
     ]
     
-    var friends: [Friend] = []
+    private var friends: Results<Friend>?
     
     private var filteredData: [String: [User]] = [:]
     private var friendsDictionary = [String: [User]]()
@@ -42,8 +44,8 @@ class FriendListController: UIViewController {
         sortSectionTitle()
         setupSearchBar()
         
-        api.fetchFriendsList({ [weak self] friends in
-            self?.friends = friends
+        api.fetchFriendsList({ [weak self] in
+            self?.loadData()
             self?.tableView.reloadData()
         })
         
@@ -65,7 +67,18 @@ class FriendListController: UIViewController {
         navigationItem.title = "Friends"
     }
     
+    func loadData() {
+        do {
+            let realm = try Realm()
+                
+            friends = realm.objects(Friend.self)
+        } catch {
+            print(error)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "toPhoto" {
             let key = friendsSectionName[selectedSection]
             if let friends = friendsDictionary[key] {
@@ -91,7 +104,11 @@ extension FriendListController: UITableViewDataSource {
 //        }
 //        return 0
         
-        return friends.count
+        guard let friends = friends?.count else {
+            return 0
+        }
+        
+        return friends
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,7 +127,10 @@ extension FriendListController: UITableViewDataSource {
 //            cell.accessoryType = .disclosureIndicator
 //        }
         
-        let friend = friends[indexPath.row]
+        guard let friend = friends?[indexPath.row] else {
+            fatalError()
+        }
+        
         let url = URL(string: friend.photo100)
         let name = friend.lastName + " " + friend.firstName
 
