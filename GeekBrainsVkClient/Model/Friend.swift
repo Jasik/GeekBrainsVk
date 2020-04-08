@@ -19,31 +19,15 @@ class Friends: Codable {
 }
 
 @objcMembers class Friend: Object, Codable {
-    dynamic let id: Int
-    dynamic let firstName: String
-    dynamic let lastName: String
-    dynamic let isClosed: Bool
-    dynamic let canAccessClosed: Bool
-    dynamic let nickname: String
-    dynamic let photo100: String
+    dynamic var id: Int = 0
+    dynamic var firstName: String = ""
+    dynamic var lastName: String = ""
+    dynamic var isClosed: Bool = false
+    dynamic var canAccessClosed: Bool = false
+    dynamic var nickname: String = ""
+    dynamic var photo100: String = ""
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
-
-/// TODO: delete
-//struct FriendsResponse: Codable {
-//    let response: Friends
-//}
-//
-//struct Friends: Codable {
-//    let count: Int
-//    let items: [Friend]
-//}
-//
-//struct Friend: Codable {
-//    let id: Int
-//    let firstName: String
-//    let lastName: String
-//    let isClosed: Bool
-//    let canAccessClosed: Bool
-//    let nickname: String
-//    let photo100: String
-//}
