@@ -85,17 +85,16 @@ struct API {
 
             do {
                 let groups = try decoder.decode(GroupResponse.self, from: data)
+                self.safeData(from: groups.response.items)
                 
-                print(groups.response.items)
-                
-                completion(groups.response.items)
+                completion()
             } catch {
                 print(error)
             }
         }
     }
     
-    func fetchUserPhoto(_ completion: @escaping ([Photo]) -> Void) {
+    func fetchUserPhoto(_ completion: @escaping () -> Void) {
         let path = "/method/photos.getAll"
         let parameters: Parameters = [
             "owner_id" : "587468244",
