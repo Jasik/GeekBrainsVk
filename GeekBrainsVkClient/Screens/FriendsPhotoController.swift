@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 class FriendsPhotoController: UIViewController {
 
@@ -19,15 +20,16 @@ class FriendsPhotoController: UIViewController {
     
     var friend: Friend?
        
-    var userPhotos: [Photo] = []
+    private var userPhotos: Results<Photo>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupColleciton()
         setupTitle()
-        api.fetchUserPhoto({ [weak self] photos  in
-            self?.userPhotos = photos
+        
+        api.fetchUserPhoto({ [weak self] in
+            self?.loadData()
             self?.collectionView.reloadData()
         })
     }
@@ -42,6 +44,16 @@ class FriendsPhotoController: UIViewController {
     private func setupTitle() {
         if let firstName = friend?.firstName, let lastName = friend?.lastName {
             navigationItem.title = lastName + " " + firstName
+        }
+    }
+    
+    private func loadData() {
+        do {
+            let realm = try Realm()
+                
+            userPhotos = realm.objects(Photo.self)
+        } catch {
+            print(error)
         }
     }
 }
@@ -59,21 +71,24 @@ extension FriendsPhotoController: UICollectionViewDelegate {
 extension FriendsPhotoController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return friend?.image.count ?? 0
-        return userPhotos.count
+        
+        guard let userPhotos = userPhotos?.count else {
+            return 0
+        }
+        return userPhotos
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.className, for: indexPath) as? PhotoCell else {
             fatalError()
         }
-//        if let friendPhoto = friend?.image {
-//
-//            cell.photoImageView.image = UIImage(named: friendPhoto[indexPath.row])
-//        }
-        let photo = userPhotos[indexPath.row]
+        guard let photo = userPhotos?[indexPath.row] else {
+            fatalError()
+        }
         let url = URL(string: photo.sizes[3].url)
         cell.photoImageView.kf.setImage(with: url)
+        
         return cell
     }
 }
