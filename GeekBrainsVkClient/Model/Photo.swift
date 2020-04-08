@@ -19,42 +19,20 @@ class Photos: Codable {
 }
 
 @objcMembers class Photo: Object, Codable {
-    dynamic let id: Int
-    dynamic let ownerId: Int
-    dynamic let sizes: [PhotoSize]
-    dynamic let text: String
-    dynamic let date: Date
+    dynamic var id: Int = 0
+    dynamic var ownerId: Int = 0
+    dynamic var sizes = List<PhotoSize>()
+    dynamic var text: String = ""
+    dynamic var date: Date = Date()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
-class PhotoSize: Codable {
-     let height: Int
-     let type: String
-     let url: String
-     let width: Int
+@objcMembers class PhotoSize: Object, Codable {
+    dynamic var height: Int = 0
+    dynamic var type: String = ""
+    dynamic var url: String = ""
+    dynamic var width: Int = 0
 }
-
-/// TODO: delete
-//struct PhotoResponse: Codable {
-//    let response: Photos
-//}
-//
-//struct Photos: Codable {
-//    let count: Int
-//    let items: [Photo]
-//}
-//
-//struct Photo: Codable {
-//    let id: Int
-//    let ownerId: Int
-//    let sizes: [PhotoSize]
-//    let text: String
-//    let date: Date
-//
-//}
-//
-//struct PhotoSize: Codable {
-//    let height: Int
-//    let type: String
-//    let url: String
-//    let width: Int
-//}
