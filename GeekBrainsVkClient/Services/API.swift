@@ -57,7 +57,7 @@ struct API {
             
             do {
                 let friends = try decoder.decode(FriendsResponse.self, from: data)
-                self.safeData(from: friends.response.items)
+                self.saveData(from: friends.response.items)
                 
                 completion()
             } catch {
@@ -85,7 +85,7 @@ struct API {
 
             do {
                 let groups = try decoder.decode(GroupResponse.self, from: data)
-                self.safeData(from: groups.response.items)
+                self.saveData(from: groups.response.items)
                 
                 completion()
             } catch {
@@ -115,7 +115,7 @@ struct API {
 
             do {
                 let photos = try decoder.decode(PhotoResponse.self, from: data)
-                self.safeData(from: photos.response.items)
+                self.saveData(from: photos.response.items)
                 
                 completion()
             } catch {
@@ -150,6 +150,25 @@ struct API {
             } catch {
                 print(error)
             }
+        }
+    }
+}
+
+extension API {
+    
+    func saveData<T: Object>(from data: [T]) {
+        
+        do {
+            let realm = try Realm()
+            let realmObjects = realm.objects(T.self)
+            
+            realm.beginWrite()
+            realm.delete(realmObjects)
+            realm.add(data, update: .all)
+            
+            try realm.commitWrite()
+        } catch {
+            print(error)
         }
     }
 }
