@@ -18,18 +18,20 @@ class UserGroupsController: UIViewController {
     
     /// TODO: Delete
     var myGroups: [TesrGroups] = []
+    
     private var groups: Results<Group>?
+    var token: NotificationToken?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        api.fetchGroupList()
+        loadAndUpdateData()
+        
         setupTitle()
         setupTable()
-        
-        api.fetchGroupList( { [weak self] in
-            self?.loadData()
-            self?.tableView.reloadData()
-        } )
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,13 +42,40 @@ class UserGroupsController: UIViewController {
         navigationItem.title = "My Groups"
     }
     
-    func loadData() {
-        do {
-            let realm = try Realm()
+    private func loadAndUpdateData() {
+        
+        guard let realm = try? Realm() else { return }
+        
+        groups = realm.objects(Group.self)
+        
+        token = groups?.observe { [weak self] (changes: RealmCollectionChange) in
             
-            groups = realm.objects(Group.self)
-        } catch {
-            print(error)
+            guard let tableView = self?.tableView else { return }
+            
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+                
+            case .update(_ , let deletions, let insertions, let modifications):
+                
+                tableView.beginUpdates()
+                
+                tableView.insertRows(
+                    at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                    with: .automatic)
+                
+                tableView.deleteRows(
+                    at: deletions.map({ IndexPath(row: $0, section: 0) }),
+                    with: .automatic)
+                
+                tableView.reloadRows(
+                    at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                    with: .automatic)
+                
+                tableView.endUpdates()
+            case .error(let error):
+                fatalError("\(error)")
+            }
         }
     }
     
@@ -77,12 +106,12 @@ extension UserGroupsController: UITableViewDelegate { }
 
 extension UserGroupsController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        guard let groups = groups?.count else {
-            return 0
-        }
-        return groups
+        groups?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
