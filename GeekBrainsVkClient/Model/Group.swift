@@ -19,39 +19,19 @@ class Groups: Codable {
 }
 
 @objcMembers class Group: Object, Codable {
-    dynamic let id: Int
-    dynamic let isAdmin: Int
-    dynamic let isAdvertiser: Int
-    dynamic let isClosed: Int
-    dynamic let isMember: Int
-    dynamic let name: String
-    dynamic let photo100: String
-    dynamic let photo200: String
-    dynamic let photo50: String
-    dynamic let screenName: String
-    dynamic let type: String
+    dynamic var id: Int = 0
+    dynamic var isAdmin: Int = 0
+    dynamic var isAdvertiser: Int = 0
+    dynamic var isClosed: Int = 0
+    dynamic var isMember: Int = 0
+    dynamic var name: String = ""
+    dynamic var photo100: String = ""
+    dynamic var photo200: String = ""
+    dynamic var photo50: String = ""
+    dynamic var screenName: String = ""
+    dynamic var type: String = ""
+    
+    override static func primaryKey() -> String? {
+           return "id"
+    }
 }
-
-/// TODO: delete
-//struct GroupResponse: Codable {
-//    let response: Groups
-//}
-//
-//struct Groups: Codable {
-//    let count: Int
-//    let items: [Group]
-//}
-//
-//struct Group: Codable {
-//    let id: Int
-//    let isAdmin: Int
-//    let isAdvertiser: Int
-//    let isClosed: Int
-//    let isMember: Int
-//    let name: String
-//    let photo100: String
-//    let photo200: String
-//    let photo50: String
-//    let screenName: String
-//    let type: String
-//}

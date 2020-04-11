@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import RealmSwift
 
 struct API {
     
@@ -37,7 +38,7 @@ struct API {
         return URLRequest(url: urlComponents.url!)
     }
     
-    func fetchFriendsList(_ completion: @escaping ([Friend]) -> Void) {
+    func fetchFriendsList(_ completion: @escaping () -> Void) {
         let path = "/method/friends.get"
         let parameters: Parameters = [
             "fields" : "nickname, photo_100", 
@@ -46,9 +47,7 @@ struct API {
         ]
         
         let url = baseURL + path
-//        AF.request(url, parameters: parameters).responseJSON { response in
-//            print("response: Friend         :        \(response)")
-//        }
+        
         AF.request(url, parameters: parameters).responseData { response in
             
             guard let data = response.value else { return }
@@ -58,17 +57,16 @@ struct API {
             
             do {
                 let friends = try decoder.decode(FriendsResponse.self, from: data)
+                self.saveData(from: friends.response.items)
                 
-                print(friends.response.items)
-                
-                completion(friends.response.items)
+                completion()
             } catch {
                 print(error)
             }
         }
     }
     
-    func fetchGroupList(_ completion: @escaping ([Group]) -> Void) {
+    func fetchGroupList(_ completion: @escaping () -> Void) {
         let path = "/method/groups.get"
         let parameters: Parameters = [
             "extended" : 1,
@@ -87,17 +85,16 @@ struct API {
 
             do {
                 let groups = try decoder.decode(GroupResponse.self, from: data)
+                self.saveData(from: groups.response.items)
                 
-                print(groups.response.items)
-                
-                completion(groups.response.items)
+                completion()
             } catch {
                 print(error)
             }
         }
     }
     
-    func fetchUserPhoto(_ completion: @escaping ([Photo]) -> Void) {
+    func fetchUserPhoto(_ completion: @escaping () -> Void) {
         let path = "/method/photos.getAll"
         let parameters: Parameters = [
             "owner_id" : "587468244",
@@ -118,9 +115,9 @@ struct API {
 
             do {
                 let photos = try decoder.decode(PhotoResponse.self, from: data)
-
-                print(photos.response.items)
-                completion(photos.response.items)
+                self.saveData(from: photos.response.items)
+                
+                completion()
             } catch {
                 print(error)
             }
@@ -153,6 +150,25 @@ struct API {
             } catch {
                 print(error)
             }
+        }
+    }
+}
+
+extension API {
+    
+    func saveData<T: Object>(from data: [T]) {
+        
+        do {
+            let realm = try Realm()
+            let realmObjects = realm.objects(T.self)
+            
+            realm.beginWrite()
+            realm.delete(realmObjects)
+            realm.add(data, update: .all)
+            
+            try realm.commitWrite()
+        } catch {
+            print(error)
         }
     }
 }
