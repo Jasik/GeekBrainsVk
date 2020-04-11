@@ -14,7 +14,7 @@ struct User {
     let image: [String]
 }
 
-struct Group {
+struct TesrGroups {
     let groupID: Int
     let groupName, image: String
 }
