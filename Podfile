@@ -6,6 +6,7 @@ target 'GeekBrainsVkClient' do
   use_frameworks!
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'RealmSwift'
   # Pods for GeekBrainsVkClient
 
 end
