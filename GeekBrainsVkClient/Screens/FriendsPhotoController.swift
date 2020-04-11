@@ -21,6 +21,7 @@ class FriendsPhotoController: UIViewController {
     var friend: Friend?
        
     private var userPhotos: Results<Photo>?
+    private var token: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,10 +29,8 @@ class FriendsPhotoController: UIViewController {
         setupColleciton()
         setupTitle()
         
-        api.fetchUserPhoto({ [weak self] in
-            self?.loadData()
-            self?.collectionView.reloadData()
-        })
+        api.fetchUserPhoto()
+        loadAndUpdateData()
     }
     
     private func setupColleciton() {
@@ -47,13 +46,35 @@ class FriendsPhotoController: UIViewController {
         }
     }
     
-    private func loadData() {
-        do {
-            let realm = try Realm()
-                
-            userPhotos = realm.objects(Photo.self)
-        } catch {
-            print(error)
+    private func loadAndUpdateData() {
+
+        guard let realm = try? Realm() else { return }
+
+        userPhotos = realm.objects(Photo.self)
+
+        token = userPhotos?.observe { [weak self] (changes: RealmCollectionChange) in
+
+        guard let collectionView = self?.collectionView else { return }
+
+        switch changes {
+            case .initial:
+                collectionView.reloadData()
+
+            case .update(_ , let deletions, let insertions, let modifications):
+
+                collectionView.performBatchUpdates({
+                    collectionView.insertItems(
+                        at: insertions.map({ IndexPath(row: $0, section: 0) }))
+
+                    collectionView.deleteItems(
+                        at: deletions.map({ IndexPath(row: $0, section: 0) }))
+
+                    collectionView.reloadItems(
+                        at: modifications.map({ IndexPath(row: $0, section: 0) }))
+                }, completion: nil)
+            case .error(let error):
+                fatalError("\(error)")
+            }
         }
     }
 }
