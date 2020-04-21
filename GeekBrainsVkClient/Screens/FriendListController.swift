@@ -27,6 +27,7 @@ class FriendListController: UIViewController {
     ]
     
     private var friends: Results<Friend>?
+    var token: NotificationToken?
     
     private var filteredData: [String: [User]] = [:]
     private var friendsDictionary = [String: [User]]()
@@ -44,12 +45,8 @@ class FriendListController: UIViewController {
         sortSectionTitle()
         setupSearchBar()
         
-        api.fetchFriendsList({ [weak self] in
-            self?.loadData()
-            self?.tableView.reloadData()
-        })
-        
-        tableView.reloadData()
+        api.fetchFriendsList()
+        loadAndUpdateData()
     }
     
     private func setupTable() {
@@ -67,16 +64,6 @@ class FriendListController: UIViewController {
         navigationItem.title = "Friends"
     }
     
-    func loadData() {
-        do {
-            let realm = try Realm()
-                
-            friends = realm.objects(Friend.self)
-        } catch {
-            print(error)
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toPhoto" {
@@ -84,6 +71,43 @@ class FriendListController: UIViewController {
             if let friends = friendsDictionary[key] {
                 let friendsPhotoController = segue.destination as! FriendsPhotoController
                 friendsPhotoController.friendtest = friendstest[selectedCell]
+            }
+        }
+    }
+    
+    private func loadAndUpdateData() {
+
+        guard let realm = try? Realm() else { return }
+
+        friends = realm.objects(Friend.self)
+
+        token = friends?.observe { [weak self] (changes: RealmCollectionChange) in
+
+        guard let tableView = self?.tableView else { return }
+
+        switch changes {
+            case .initial:
+                tableView.reloadData()
+
+            case .update(_ , let deletions, let insertions, let modifications):
+
+                tableView.beginUpdates()
+
+                tableView.insertRows(
+                at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                with: .automatic)
+
+                tableView.deleteRows(
+                at: deletions.map({ IndexPath(row: $0, section: 0) }),
+                with: .automatic)
+
+                tableView.reloadRows(
+                at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                with: .automatic)
+
+                tableView.endUpdates()
+            case .error(let error):
+                fatalError("\(error)")
             }
         }
     }

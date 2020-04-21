@@ -38,7 +38,7 @@ struct API {
         return URLRequest(url: urlComponents.url!)
     }
     
-    func fetchFriendsList(_ completion: @escaping () -> Void) {
+    func fetchFriendsList() {
         let path = "/method/friends.get"
         let parameters: Parameters = [
             "fields" : "nickname, photo_100", 
@@ -57,16 +57,15 @@ struct API {
             
             do {
                 let friends = try decoder.decode(FriendsResponse.self, from: data)
-                self.saveData(from: friends.response.items)
                 
-                completion()
+                self.saveData(from: friends.response.items)
             } catch {
                 print(error)
             }
         }
     }
     
-    func fetchGroupList(_ completion: @escaping () -> Void) {
+    func fetchGroupList() {
         let path = "/method/groups.get"
         let parameters: Parameters = [
             "extended" : 1,
@@ -85,16 +84,15 @@ struct API {
 
             do {
                 let groups = try decoder.decode(GroupResponse.self, from: data)
-                self.saveData(from: groups.response.items)
                 
-                completion()
+                self.saveData(from: groups.response.items)
             } catch {
                 print(error)
             }
         }
     }
     
-    func fetchUserPhoto(_ completion: @escaping () -> Void) {
+    func fetchUserPhoto() {
         let path = "/method/photos.getAll"
         let parameters: Parameters = [
             "owner_id" : "587468244",
@@ -115,9 +113,8 @@ struct API {
 
             do {
                 let photos = try decoder.decode(PhotoResponse.self, from: data)
-                self.saveData(from: photos.response.items)
                 
-                completion()
+                self.saveData(from: photos.response.items)
             } catch {
                 print(error)
             }
