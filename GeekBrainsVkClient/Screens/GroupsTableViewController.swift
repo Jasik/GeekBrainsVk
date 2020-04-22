@@ -13,7 +13,7 @@ class GroupsTableViewController: UITableViewController {
     
     @IBOutlet weak private var searchBar: UISearchBar!
     
-    private let api = API()
+    private let apiManager = ApiManager()
     
     /// TODO: Delete
     let groupsForTest = [
@@ -32,7 +32,7 @@ class GroupsTableViewController: UITableViewController {
         
         setupSearchBar()
         
-        api.fetchSearched(group: "the station", { [weak self] groups in
+        apiManager.fecthData(endPoint: .searchGroups(group: "the station"), model: Group.self, { [weak self] groups in
             self?.groups = groups
             self?.tableView.reloadData()
         })
