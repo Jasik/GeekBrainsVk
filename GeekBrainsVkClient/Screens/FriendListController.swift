@@ -45,7 +45,7 @@ class FriendListController: UIViewController {
         sortSectionTitle()
         setupSearchBar()
         
-        api.fetchFriendsList()
+        apiManager.fetchFriend()
         loadAndUpdateData()
     }
     
