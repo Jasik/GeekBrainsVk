@@ -22,9 +22,9 @@ class Friends: Codable {
     dynamic var id: Int = 0
     dynamic var firstName: String = ""
     dynamic var lastName: String = ""
-    dynamic var isClosed: Bool = false
-    dynamic var canAccessClosed: Bool = false
-    dynamic var nickname: String = ""
+    dynamic var isClosed: Bool? = false
+    dynamic var canAccessClosed: Bool? = false
+    dynamic var nickname: String? = ""
     dynamic var photo100: String = ""
     
     override static func primaryKey() -> String? {
