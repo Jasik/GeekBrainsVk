@@ -65,10 +65,7 @@ extension Login: WKNavigationDelegate {
             }
         
         let token = params["access_token"]
-        
-        /// TODO: delete
-        print(token)
-        
+
         if let token = token {
             session.token = token
         }
