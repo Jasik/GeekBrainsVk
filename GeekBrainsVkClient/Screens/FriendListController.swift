@@ -13,9 +13,9 @@ import RealmSwift
 class FriendListController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var searchBar: UISearchBar!
     
-    private let api = API()
+    private let apiManager = ApiManager()
     
     /// TODO: Delete
     private let friendstest: [User] = [
