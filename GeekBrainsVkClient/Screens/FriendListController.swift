@@ -27,7 +27,7 @@ class FriendListController: UIViewController {
     ]
     
     private var friends: Results<Friend>?
-    var token: NotificationToken?
+    private var token: NotificationToken?
     
     private var filteredData: [String: [User]] = [:]
     private var friendsDictionary = [String: [User]]()
