@@ -14,24 +14,23 @@ class UserGroupsController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
-    private let api = API()
+    private let apiManager = ApiManager()
     
     /// TODO: Delete
     var myGroups: [TesrGroups] = []
     
     private var groups: Results<Group>?
-    var token: NotificationToken?
+    private var token: NotificationToken?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        api.fetchGroupList()
+        apiManager.fetchGroup()
         loadAndUpdateData()
-        
+
         setupTitle()
         setupTable()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
