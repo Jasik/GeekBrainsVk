@@ -14,11 +14,10 @@ class FriendsPhotoController: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private let api = API()
+    private let apiManager = ApiManager()
     
     var friendtest: User?
-    
-    var friend: Friend?
+    private var friend: Friend?
        
     private var userPhotos: Results<Photo>?
     private var token: NotificationToken?
@@ -29,7 +28,7 @@ class FriendsPhotoController: UIViewController {
         setupColleciton()
         setupTitle()
         
-        api.fetchUserPhoto()
+        apiManager.fetchPhoto()
         loadAndUpdateData()
     }
     
