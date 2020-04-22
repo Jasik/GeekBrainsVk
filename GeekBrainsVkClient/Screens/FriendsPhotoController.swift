@@ -80,6 +80,7 @@ class FriendsPhotoController: UIViewController {
 }
 
 extension FriendsPhotoController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailView = storyboard?.instantiateViewController(identifier: "DetailView") as! DetailView
         if let photos = friend?.photo100 {
@@ -115,6 +116,7 @@ extension FriendsPhotoController: UICollectionViewDataSource {
 }
 
 extension FriendsPhotoController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 220)
     }
