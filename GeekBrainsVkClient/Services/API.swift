@@ -10,17 +10,95 @@ import Foundation
 import Alamofire
 import RealmSwift
 
-struct API {
+struct ApiEndPoint {
     
-    private let token = Session.shared.token
+    static let baseURL = "https://api.vk.com"
     
-    private let authURL = "https://oauth.vk.com"
-    private let baseURL = "https://api.vk.com"
+    static let token = Session.shared.token
+    static let version = "5.103"
     
-    private let version = "5.103"
+    enum EndPoint {
+        case groups
+        case friends
+        case photo
+        case searchGroups(group: String)
+        
+        var path: String {
+            switch self {
+            case .friends:
+                return baseURL + "/method/friends.get"
+            case .groups:
+                return baseURL + "/method/groups.get"
+            case .photo:
+                return baseURL + "/method/photos.getAll"
+            case .searchGroups(_):
+                return baseURL + "/method/groups.search"
+            }
+        }
+        
+        var parameters: Parameters {
+            switch self {
+            case .friends:
+                return ["fields" : "nickname, photo_100", "access_token" : token, "v" : version]
+            case .groups:
+                return ["extended" : 1, "access_token" : token, "v" : version]
+            case .photo:
+                return ["owner_id" : "587468244", "extended" : 0, "photo_sizes" : 1, "access_token" : token, "v" : version]
+            case .searchGroups(let group):
+                return ["q" : group, "type" : "group", "access_token" : token, "v" : version]
+            }
+        }
+    }
+}
 
-    /// TODO: change to Alamofire later
-    mutating func logIn() -> URLRequest {
+class ApiManager {
+    
+    func fecthData<T: Codable & Object>(endPoint: ApiEndPoint.EndPoint, model: T.Type, _ completion: @escaping ([T]) -> Void) {
+        
+        AF.request(endPoint.path, parameters: endPoint.parameters).responseJSON { response in
+            
+            guard
+                let dict = response.value as? [String : Any],
+                let dictResponse = dict["response"] as? [String : Any],
+                let dictItems = dictResponse["items"],
+                let data = try? JSONSerialization.data(withJSONObject: dictItems, options: [])
+            else { return }
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            let result = try! decoder.decode([T].self, from: data)
+
+            completion(result)
+        }
+    }
+    
+    func fetchGroup() {
+        
+        self.fecthData(endPoint: .groups, model: Group.self, { [weak self] groups in
+            self?.saveData(from: groups)
+        })
+    }
+    
+    func fetchFriend() {
+        
+        self.fecthData(endPoint: .friends, model: Friend.self, { [weak self] friends in
+            self?.saveData(from: friends)
+        })
+    }
+    
+    func fetchPhoto() {
+        
+        self.fecthData(endPoint: .photo, model: Photo.self, { [weak self] photos in
+            self?.saveData(from: photos)
+        })
+    }
+
+}
+
+extension ApiManager {
+    
+    func logIn() -> URLRequest {
         
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
@@ -38,121 +116,6 @@ struct API {
         return URLRequest(url: urlComponents.url!)
     }
     
-    func fetchFriendsList() {
-        let path = "/method/friends.get"
-        let parameters: Parameters = [
-            "fields" : "nickname, photo_100", 
-            "access_token" : token,
-            "v" : version
-        ]
-        
-        let url = baseURL + path
-        
-        AF.request(url, parameters: parameters).responseData { response in
-            
-            guard let data = response.value else { return }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            do {
-                let friends = try decoder.decode(FriendsResponse.self, from: data)
-                
-                self.saveData(from: friends.response.items)
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
-    func fetchGroupList() {
-        let path = "/method/groups.get"
-        let parameters: Parameters = [
-            "extended" : 1,
-            "access_token" : token,
-            "v" : version
-        ]
-        
-        let url = baseURL + path
-
-        AF.request(url, parameters: parameters).responseData { response in
-            
-            guard let data = response.value else { return }
-
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-            do {
-                let groups = try decoder.decode(GroupResponse.self, from: data)
-                
-                self.saveData(from: groups.response.items)
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
-    func fetchUserPhoto() {
-        let path = "/method/photos.getAll"
-        let parameters: Parameters = [
-            "owner_id" : "587468244",
-            "extended" : 0,
-            "photo_sizes" : 1,
-            "access_token" : token,
-            "v" : version
-        ]
-           
-        let url = baseURL + path
-
-        AF.request(url, parameters: parameters).responseData { response in
-
-            guard let data = response.value else { return }
-
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-            do {
-                let photos = try decoder.decode(PhotoResponse.self, from: data)
-                
-                self.saveData(from: photos.response.items)
-            } catch {
-                print(error)
-            }
-        }
-    }
-
-    func fetchSearched(group: String, _ completion: @escaping ([Group]) -> Void) {
-        let path = "/method/groups.search"
-        let parameters: Parameters = [
-            "q" : group,
-            "type" : "group",
-            "access_token" : token,
-            "v" : version
-        ]
-           
-        let url = baseURL + path
-       AF.request(url, parameters: parameters).responseData { response in
-            
-            guard let data = response.value else { return }
-
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-            do {
-                let groups = try decoder.decode(GroupResponse.self, from: data)
-                
-                print(groups.response.items)
-                
-                completion(groups.response.items)
-            } catch {
-                print(error)
-            }
-        }
-    }
-}
-
-extension API {
-    
     func saveData<T: Object>(from data: [T]) {
         
         do {
@@ -169,46 +132,3 @@ extension API {
         }
     }
 }
-
-  /// TODO: create a normal manager
-    
-//    enum EndPoint {
-//        static let authURL = URL(string: "https://oauth.vk.com/")!
-//
-//        case oauth
-//
-//        var url: URL {
-//            switch self {
-//            case .oauth:
-//                return EndPoint.authURL
-//            }
-//        }
-//    }
-
-//enum MetodAndParameters {
-//     case friends
-//     case photos
-//     case groups
-//
-//     func method() -> String {
-//         switch self {
-//         case .friends:
-//             return "friends.get"
-//         case .photos:
-//             return "photos.getAll"
-//         case .groups:
-//             return "groups.get"
-//         }
-//     }
-//
-//     func parameters() -> Parameters {
-//         switch self {
-//         case .friends:
-//             return [:]
-//         case .photos:
-//             return [:]
-//         case .groups:
-//             return [:]
-//         }
-//     }
-// }
