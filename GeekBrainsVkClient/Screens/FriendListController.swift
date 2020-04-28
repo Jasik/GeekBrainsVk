@@ -13,9 +13,9 @@ import RealmSwift
 class FriendListController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var searchBar: UISearchBar!
     
-    private let api = API()
+    private let apiManager = ApiManager()
     
     /// TODO: Delete
     private let friendstest: [User] = [
@@ -27,7 +27,7 @@ class FriendListController: UIViewController {
     ]
     
     private var friends: Results<Friend>?
-    var token: NotificationToken?
+    private var token: NotificationToken?
     
     private var filteredData: [String: [User]] = [:]
     private var friendsDictionary = [String: [User]]()
@@ -45,7 +45,7 @@ class FriendListController: UIViewController {
         sortSectionTitle()
         setupSearchBar()
         
-        api.fetchFriendsList()
+        apiManager.fetchFriend()
         loadAndUpdateData()
     }
     

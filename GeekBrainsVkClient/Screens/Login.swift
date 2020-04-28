@@ -17,14 +17,14 @@ class Login: UIViewController {
         }
     }
     
-    private var api = API()
+    private var apiManager = ApiManager()
     
     private let session = Session.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loginWebView.load(api.logIn())
+        loginWebView.load(apiManager.logIn())
         
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -65,10 +65,7 @@ extension Login: WKNavigationDelegate {
             }
         
         let token = params["access_token"]
-        
-        /// TODO: delete
-        print(token)
-        
+
         if let token = token {
             session.token = token
         }

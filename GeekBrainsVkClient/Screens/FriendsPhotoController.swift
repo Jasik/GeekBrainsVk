@@ -14,11 +14,10 @@ class FriendsPhotoController: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private let api = API()
+    private let apiManager = ApiManager()
     
     var friendtest: User?
-    
-    var friend: Friend?
+    private var friend: Friend?
        
     private var userPhotos: Results<Photo>?
     private var token: NotificationToken?
@@ -29,7 +28,7 @@ class FriendsPhotoController: UIViewController {
         setupColleciton()
         setupTitle()
         
-        api.fetchUserPhoto()
+        apiManager.fetchPhoto()
         loadAndUpdateData()
     }
     
@@ -80,6 +79,7 @@ class FriendsPhotoController: UIViewController {
 }
 
 extension FriendsPhotoController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailView = storyboard?.instantiateViewController(identifier: "DetailView") as! DetailView
         if let photos = friend?.photo100 {
@@ -115,6 +115,7 @@ extension FriendsPhotoController: UICollectionViewDataSource {
 }
 
 extension FriendsPhotoController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 220)
     }

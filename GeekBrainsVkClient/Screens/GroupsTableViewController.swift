@@ -13,7 +13,7 @@ class GroupsTableViewController: UITableViewController {
     
     @IBOutlet weak private var searchBar: UISearchBar!
     
-    private let api = API()
+    private let apiManager = ApiManager()
     
     /// TODO: Delete
     let groupsForTest = [
@@ -32,7 +32,7 @@ class GroupsTableViewController: UITableViewController {
         
         setupSearchBar()
         
-        api.fetchSearched(group: "the station", { [weak self] groups in
+        apiManager.fecthData(endPoint: .searchGroups(group: "the station"), model: Group.self, { [weak self] groups in
             self?.groups = groups
             self?.tableView.reloadData()
         })
@@ -44,19 +44,15 @@ class GroupsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        /// TODO: update filter
-//        return filteredData.count
         return groups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupCell
-
-        /// TODO: Delete
-//        let group = filteredData[indexPath.row]
-//        cell.groupName.text = group.groupName
-//        cell.groupThumnailImageView.image = UIImage(named: group.image)
         
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: GroupCell.className, for: indexPath) as? GroupCell else {
+            fatalError()
+        }
+   
         let group = groups[indexPath.row]
         let url = URL(string: group.photo100)
         cell.groupName.text = group.name
